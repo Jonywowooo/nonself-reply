@@ -1,0 +1,235 @@
+/* Word 2003 reading-layout visual reference, inside the existing local IE viewer.
+   Fixed game pages and the window-body scroll/save contract remain unchanged. */
+.xp-workspace .window[data-window-app] .local-document {
+  background: #9099ae;
+  color: #000;
+}
+.xp-workspace .window[data-window-app] .local-document .document-paper {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  background: #9099ae;
+  color: #000;
+  font: 16px/1.85 SimSun, "Songti SC", serif;
+}
+.local-document .reader-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 34px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 4px 10px;
+  border: 0;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #365a97;
+  background: linear-gradient(#daecff, #cde8ff 36%, #b5cefa 65%, #8fb6ec);
+  color: #000;
+  font: 13px/1.5 Tahoma, SimSun, sans-serif;
+}
+.local-document .reading-nav { justify-content: center; gap: 18px; }
+.local-document .reader-workspace { display: grid; grid-template-columns: 130px minmax(0, 1fr); min-height: 100%; }
+.local-document .reader-main { min-width: 0; }
+.local-document .reader-page-map { min-width: 0; padding: 10px 5px; border-right: 2px ridge #ece9d8; background: #9099ae; }
+.local-document .reader-page-map .reading-index { margin: 0; color: #000; font: 12px/1.6 Tahoma, SimSun, sans-serif; }
+.local-document .reader-page-map summary { margin: 0 0 8px 6px; }
+.local-document .reader-page-map .reader-thumbnail { display: flex; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; margin: 0 0 6px; padding: 2px 5px; color: #000; font: 12px/1.5 Tahoma, SimSun, sans-serif; text-decoration: none; }
+.local-document .thumbnail-paper { display: block; width: 80px; height: 111px; box-sizing: border-box; padding: 12px 8px; border: 1px solid #000; background: #fff; box-shadow: 1px 1px 0 #252525; }
+.local-document .reader-thumbnail[aria-current="page"] .thumbnail-paper { outline: 2px solid #fdce72; outline-offset: 1px; }
+.local-document .thumbnail-paper > span { display: block; overflow: hidden; height: 18px; color: #000; font: 5px/9px SimSun, serif; text-align: center; }
+.local-document .thumbnail-paper > i { display: block; height: 63px; overflow: hidden; margin-top: 5px; color: #000; font: normal 3.5px/4.8px SimSun, serif; text-align: left; }
+.local-document .reader-thumbnail:hover .thumbnail-paper { outline: 1px solid #fff; outline-offset: 2px; }
+.local-document .reading-nav span { min-width: 92px; text-align: center; color: #000; font: inherit; }
+.local-document .reader-toolbar .system-button {
+  min-width: 76px;
+  min-height: 25px;
+  padding: 2px 10px;
+  font: 13px/1.5 Tahoma, SimSun, sans-serif;
+}
+.local-document .reader-toolbar .plain-link {
+  padding: 3px 6px;
+  border: 1px solid transparent;
+  color: #000;
+  font: inherit;
+  text-decoration: none;
+}
+.local-document .reader-toolbar .plain-link:hover,
+.local-document .reader-toolbar .plain-link[aria-current="page"] {
+  border-color: #316ac5;
+  background: #c1d2ee;
+}
+.local-document .reader-file-controls {
+  padding: 5px 12px;
+  border-bottom: 1px solid #aca899;
+  background: #f1efe5;
+  color: #333;
+  font: 12px/1.6 Tahoma, SimSun, sans-serif;
+}
+.local-document .reader-file-controls p,
+.local-document .reader-file-controls .reading-index {
+  margin: 3px 0;
+  color: #333;
+  font: inherit;
+}
+.local-document .reader-file-controls .backup-read-status { padding: 0; border: 0; background: transparent; }
+.local-document .reading-index[open] { padding-bottom: 5px; }
+.local-document .reading-index button {
+  display: inline-block;
+  margin: 3px 12px 3px 0;
+  padding: 2px 0;
+  font: 12px/1.6 Tahoma, SimSun, sans-serif;
+}
+.local-document .reader-pages {
+  padding: 24px 28px 32px;
+  background: #9099ae;
+}
+.local-document .reading-original {
+  width: min(720px, 100%);
+  max-width: none;
+  box-sizing: border-box;
+  margin: 0 auto 26px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.local-document .reading-original:last-child { margin-bottom: 0; }
+.local-document .source-file-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px 18px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  padding: 0 2px 7px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font: 12px/1.6 Tahoma, SimSun, sans-serif;
+}
+.local-document .source-file-header small { color: #fff; font: inherit; text-align: right; }
+.local-document .source-sheet,
+.xp-workspace .window[data-window-app] .local-document .continuity-module,
+.xp-workspace .window[data-window-app] .local-document .doctor-letter,
+.local-document .continuity-names {
+  width: 100%;
+  max-width: 720px;
+  min-height: 560px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 46px 60px 54px;
+  border: 1px solid #454545;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 2px 2px 0 #404040;
+  color: #000;
+  font: 16px/1.85 SimSun, "Songti SC", serif;
+}
+.local-document .source-transcript {
+  max-width: none;
+  color: #000;
+  font: inherit;
+}
+.local-document .source-transcript p,
+.local-document .source-sheet p,
+.local-document .continuity-module p,
+.local-document .doctor-letter p {
+  margin: 0 0 18px;
+  color: #000;
+  font: 16px/1.85 SimSun, "Songti SC", serif;
+}
+.local-document .source-sheet > h1,
+.local-document .continuity-module h1,
+.local-document .doctor-letter h1 {
+  margin: 0 0 30px;
+  padding: 0;
+  border: 0;
+  color: #000;
+  font: normal 24px/1.5 SimSun, "Songti SC", serif;
+  text-align: center;
+}
+.local-document .source-letter .source-sheet,
+.local-document .source-notes .source-sheet {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 46px 60px 54px;
+  border-left: 1px solid #454545;
+}
+.local-document .source-notes .source-sheet > h1 {
+  font-size: 20px;
+  text-align: left;
+}
+.local-document .source-letter .source-sheet > h1 {
+  color: #000;
+  font-size: 22px;
+}
+.local-document .source-list .source-transcript { font: 16px/1.85 SimSun, "Songti SC", serif; }
+.local-document .source-clipping .source-sheet > h1 {
+  padding-bottom: 18px;
+  border-bottom: 3px double #555;
+  font-weight: bold;
+}
+.local-document .source-session .source-sheet > h1 { padding-bottom: 18px; border-bottom: 1px solid #999; }
+.local-document .source-signature { margin-top: 28px !important; padding-top: 0; font-weight: normal; text-align: right; }
+.local-document .source-divider { margin: 26px 0; border-color: #bbb; }
+.local-document .reading-portrait {
+  width: min(720px, 100%);
+  box-sizing: border-box;
+  margin: 0 auto 26px;
+  padding: 18px;
+  border: 1px solid #454545;
+  background: #fff;
+  box-shadow: 2px 2px 0 #404040;
+  color: #000;
+}
+.local-document .reading-portrait img { display: block; width: 160px; max-width: 100%; height: auto; margin: 0 auto 10px; }
+.local-document .reading-portrait figcaption { color: #000; font: 13px/1.6 Tahoma, SimSun, sans-serif; text-align: center; }
+.local-document .identity-gate { max-width: none; margin: 0; padding: 0; }
+.local-document .continuity-view { width: 100%; max-width: none; margin: 0; padding: 0; }
+.local-document .identity-letterhead { margin: 0 0 32px; padding-bottom: 12px; border-bottom: 1px solid #bbb; color: #555; font: 14px/1.6 SimSun, serif; }
+.local-document .identity-question { margin: 0 0 26px; color: #000; font: 24px/1.5 SimSun, serif; }
+.local-document .continuity-names textarea { width: 100%; min-height: 120px; padding: 7px; color: #000; font: 16px/1.75 SimSun, serif; resize: vertical; }
+.local-document .identity-scope { margin: 16px 0 10px; color: #555; font: 13px/1.7 SimSun, serif; }
+.local-document .identity-hint p { color: #463b1e; font: 15px/1.8 SimSun, serif; }
+.local-document .continuity-module > .faint { margin: 0 0 30px; padding-bottom: 12px; border-bottom: 1px solid #bbb; color: #555; font: 12px/1.6 Tahoma, SimSun, sans-serif; }
+.local-document .doctor-letter h1 { margin-bottom: 34px; }
+.local-document .doctor-letter > p:first-of-type { margin-bottom: 22px; }
+.local-document .doctor-letter .letter-signature { margin: 30px 0 24px; text-align: right; }
+.local-document .letter-access-record { margin-top: 32px; padding-top: 14px; border-top: 1px solid #bbb; color: #555; font: 12px/1.7 Tahoma, SimSun, sans-serif; }
+.local-document .letter-access-record p { margin-top: 8px; color: #555; font: inherit; }
+.local-document .doctor-letter .letter-address { margin: 12px 0 0; color: #555; font: 13px/1.7 SimSun, serif; }
+.local-document .continuity-actions { justify-content: center; }
+.local-document button:focus-visible,
+.local-document summary:focus-visible { outline: 1px dotted #000; outline-offset: 2px; }
+@container (max-width: 800px) {
+  .local-document .reader-pages { padding: 18px 20px 26px; }
+  .local-document .source-sheet,
+  .local-document .source-letter .source-sheet,
+  .local-document .source-notes .source-sheet,
+  .xp-workspace .window[data-window-app] .local-document .continuity-module,
+  .xp-workspace .window[data-window-app] .local-document .doctor-letter,
+  .local-document .continuity-names { padding: 38px 42px 44px; }
+}
+@container (max-width: 550px) {
+  .local-document .reader-workspace { grid-template-columns: 1fr; }
+  .local-document .reader-page-map { border-right: 0; border-bottom: 2px ridge #ece9d8; padding: 4px 8px; }
+  .local-document .reader-page-map .reading-index[open] { display: flex; flex-wrap: wrap; gap: 4px; }
+  .local-document .reader-page-map summary { flex-basis: 100%; margin: 0; }
+  .local-document .reader-page-map .reader-thumbnail { display: inline-flex; width: auto; margin: 0; padding: 3px; gap: 3px; }
+  .local-document .thumbnail-paper { width: 26px; height: 34px; padding: 3px; }
+  .local-document .thumbnail-paper > span { height: 6px; line-height: 5px; font-size: 3px; }
+  .local-document .thumbnail-paper > i { height: 17px; margin-top: 2px; }
+  .local-document .reader-pages { padding: 14px 12px 20px; }
+  .local-document .source-sheet,
+  .local-document .source-letter .source-sheet,
+  .local-document .source-notes .source-sheet,
+  .xp-workspace .window[data-window-app] .local-document .continuity-module,
+  .xp-workspace .window[data-window-app] .local-document .doctor-letter,
+  .local-document .continuity-names { min-height: 440px; padding: 30px 24px 36px; }
+  .local-document .source-file-header { flex-direction: column; gap: 2px; }
+  .local-document .source-file-header small { text-align: left; }
+  .local-document .reading-nav { gap: 8px; }
+  .local-document .reader-toolbar .system-button { min-width: 65px; }
+}

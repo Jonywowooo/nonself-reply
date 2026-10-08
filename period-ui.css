@@ -1,0 +1,1435 @@
+/* Reference pass: XP Luna / IE6 / 2000s Chinese search and BBS.
+   Presentation only. No filters, scan lines or AI reconstruction on Bliss. */
+.computer {
+  background: #245edb url('./assets/xp-bliss-original.bmp') center / 100% 100% no-repeat;
+}
+.computer::before { display: none; }
+.xp-icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.desktop-icons { width: 88px; padding: 9px 4px; gap: 11px; }
+.desktop-icon, .desktop-static { width: 80px; min-height: 61px; font: 12px/1.25 Tahoma, SimSun, sans-serif; }
+.desktop-icons .xp-icon { width: 32px; height: 32px; margin-bottom: 5px; filter: none; }
+.window { border: 3px solid #0055ea; border-top: 0; border-radius: 8px 8px 0 0; box-shadow: none; }
+.window-titlebar {
+  min-height: 30px; padding: 0 3px; border: 0; border-radius: 7px 7px 0 0;
+  background: linear-gradient(#79abfa 0, #236af0 6%, #0057e6 20%, #0051d6 70%, #0043b5 92%, #00399c);
+  font: bold 13px Tahoma, SimSun, sans-serif; text-shadow: 1px 1px #123888;
+}
+.window-controls button { width: 22px; height: 22px; color: white; border-radius: 3px; border: 1px solid white; box-shadow: inset 1px 1px 2px #b4d1ff; background: linear-gradient(135deg,#76a2ed,#336ed5 45%,#1851b8); font: bold 18px/18px Arial,sans-serif; }
+.window-controls button:disabled { color: white; }
+.window-controls .window-close { background: linear-gradient(135deg,#f3aa8e,#dc5435 50%,#bd371c); box-shadow: inset 1px 1px 2px #ffd0b1; }
+.window-title-text { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.window-controls,.window-titlebar .tiny-icon { flex-shrink: 0; }
+.window:has(.browser-layout) .tiny-icon { width: 16px; height: 16px; background: transparent url('./assets/xp-original/ie-paper.png') center / contain no-repeat; }
+.window[aria-label="Outlook Express"] .tiny-icon { width: 16px; height: 16px; background: transparent url('./assets/xp-original/mail.png') center / contain no-repeat; }
+.menu-bar { height: 24px; min-height: 24px; gap: 20px; padding: 4px 9px; background: #ece9d8; border-bottom: 1px solid #d4d0c8; font: 12px/15px Tahoma,SimSun,sans-serif; color: #111; }
+.window:has(.browser-layout) .menu-bar { position: relative; padding-right: 40px; }
+.window:has(.browser-layout) .menu-bar::after { content: ''; position: absolute; top: 0; right: 0; height: 23px; width: 35px; border-left: 1px solid #aca899; background: white url('./assets/xp-original/windows.png') center / 21px 21px no-repeat; }
+.window:has(.browser-layout)::after { content: '完成　　　　　　　　　　　　　　　　　　　　　　　　　Internet'; flex: 0 0 22px; padding: 3px 7px; border-top: 1px solid #aca899; box-shadow: inset 0 1px white; background: #ece9d8; color: #111; font: 12px Tahoma,SimSun,sans-serif; }
+.taskbar { height: 30px; border: 0; background: linear-gradient(#3887fc 0,#245edb 16%,#245edb 87%,#1941a5); box-shadow: inset 0 1px #77aaff; }
+.start-button { height: 30px; min-width: 98px; border: 0; border-radius: 0 13px 13px 0; background: linear-gradient(#79c777 0,#479d44 15%,#368832 45%,#388f35 73%,#246925); box-shadow: inset 0 2px 3px #b6edaa,2px 0 4px #174e9d; font: bold italic 17px Tahoma,SimSun,sans-serif; }
+.start-mark { width: 22px; height: 22px; margin-right: 3px; transform: none; background: url('./assets/xp-start-mark.svg') center / contain no-repeat; }
+.start-mark b { display: none; }
+.start-mark b:nth-child(2) { background: #83bf35; }
+.start-mark b:nth-child(3) { background: #42a5ed; }
+.task-item { height: 24px; border-radius: 3px; border-color: #1748b5; background: #3d7de2; box-shadow: inset 1px 1px #73a3f4; }
+.task-item.active { background: #1951b9; box-shadow: inset 1px 1px 3px #123885; }
+.tray { background: linear-gradient(#19b3ee,#1298e6 20%,#1298e6 85%,#0876c6); border-left: 1px solid #126db3; box-shadow: inset 1px 1px #4bc5f9; }
+
+/* IE toolbar is two rows, not a modern single-row navigation bar. */
+.browser-chrome { position: sticky; top: 0; z-index: 15; display: block; padding: 0; border-bottom: 1px solid #7f9db9; background: #ece9d8; box-shadow: 0 1px white; }
+.ie-toolbar { height: 53px; display: flex; align-items: center; gap: 2px; padding: 3px 6px; border-bottom: 1px solid #d4d0c8; box-shadow: inset 0 1px #fff; }
+.ie-toolbar .browser-nav, .ie-toolbar .browser-history-button, .ie-static-tool { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; gap: 5px; height: 42px; min-width: 34px; padding: 2px 5px; border: 1px solid transparent; border-radius: 2px; background: none; color: #111; font: 12px Tahoma,SimSun,sans-serif; }
+.ie-toolbar button:hover:not(:disabled) { border-color: #b2ada0; box-shadow: inset 1px 1px white; }
+.ie-toolbar button:active:not(:disabled) { background: #dedbd0; box-shadow: inset 1px 1px #b2ada0; }
+.ie-toolbar button:disabled { border-color: transparent; background: transparent; color: #8e8b81; }
+.ie-toolbar button:disabled .ie-icon { filter: grayscale(1); opacity: .45; }
+.ie-toolbar small { font-size: 10px; }
+.ie-separator { width: 2px; height: 35px; margin: 0 4px; background: #d1cdbf; border-right: 1px solid white; }
+.ie-icon { display: inline-grid; width: 30px; height: 30px; place-items: center; font-style: normal; flex-shrink: 0; }
+.ie-back,.ie-forward { color: white; border-radius: 50%; background: radial-gradient(circle at 35% 20%,#acd488,#529d2c 54%,#387325); border: 1px solid #6f9663; box-shadow: inset 0 1px 2px white; font: bold 26px/1 Arial; }
+.ie-back { transform: rotate(180deg); }
+.ie-stop,.ie-refresh { width: 23px; height: 29px; border: 1px solid #8c9bab; background: linear-gradient(135deg,white 80%,#cadde9); box-shadow: inset 1px 1px white; color: #cf352b; font: bold 27px/1 Arial; }
+.ie-refresh { color: #448738; }
+.ie-home { color: #d58228; font: bold 39px/1 Arial; text-shadow: 1px 1px #f3c154,-1px -1px white; }
+.ie-magnify { width: 24px; height: 24px; margin: 0 6px 6px 3px; border: 3px solid #76a3bd; border-radius: 50%; background: linear-gradient(135deg,white,#c1e2f5); position: relative; }
+.ie-magnify::after { content: ''; position: absolute; width: 5px; height: 15px; left: -6px; top: 16px; background: #ab7430; border: 1px solid #825924; transform: rotate(40deg); }
+.ie-star { color: #f8c830; font-size: 37px; text-shadow: 1px 1px #b38714,-1px -1px white; }
+.ie-history { color: #479338; border: 2px solid #789f73; border-radius: 50%; background: #e3f1e4; font: 31px/1 Arial; }
+.browser-address-form { display: flex; height: 30px; align-items: center; gap: 5px; padding: 2px 5px; margin: 0; }
+.browser-address-form label { flex: 0 0 51px; color: #555; font: 12px Tahoma,SimSun,sans-serif; }
+.ie-address-field { flex: 1; min-width: 0; display: flex; align-items: center; height: 24px; background: white; border: 1px solid #7f9db9; box-shadow: inset 1px 1px #d2d2d2; padding-left: 3px; }
+.ie-address-field .xp-icon { width: 16px; height: 16px; margin: 0 4px 0 0; filter: none; }
+.browser-address-form .browser-address { height: 21px; min-height: 21px; padding: 1px 2px; border: 0; box-shadow: none; color: black; font: 13px Tahoma,SimSun,sans-serif; }
+.ie-address-field>span { align-self: stretch; width: 18px; padding-top: 2px; text-align: center; color: #476ab7; border-left: 1px solid #adc3e5; background: linear-gradient(#e3edfb,#b6ccef); }
+.browser-address-form .ie-go { height: 25px; display: flex; align-items: center; gap: 4px; border-color: transparent; background: transparent; }
+.ie-go i { display: grid; place-items: center; width: 22px; height: 22px; color: white; font: bold 19px Arial; background: linear-gradient(#8bbf72,#489230); border: 1px solid #6ba151; border-radius: 2px; }
+.ie-links { border-left: 1px solid #b7b3a4; padding: 4px 7px; color: #6d6b63; font: 12px SimSun,serif; }
+.ie-back,.ie-forward,.ie-stop,.ie-refresh,.ie-home,.ie-history,.ie-magnify,.ie-star { width: 30px; height: 30px; margin: 0; border: 0; border-radius: 0; box-shadow: none; transform: none; background: transparent center / contain no-repeat; color: transparent; text-shadow: none; font-size: 0; }
+.ie-magnify::after { display: none; }
+.ie-magnify { background-image: url('./assets/xp-original/search.png'); }
+.ie-star { background-image: url('./assets/xp-original/favorite.png'); }
+.ie-go i { color: transparent; font-size: 0; border: 0; background: transparent url('./assets/xp-original/go.png') center / contain no-repeat; }
+.ie-back { background-image: url('./assets/xp-original/back.png'); }
+.ie-forward { background-image: url('./assets/xp-original/forward.png'); }
+.ie-stop { background-image: url('./assets/xp-original/stop.png'); }
+.ie-refresh { background-image: url('./assets/xp-original/refresh.png'); }
+.ie-home { background-image: url('./assets/xp-original/home.png'); }
+.ie-history { background-image: url('./assets/xp-original/history.png'); }
+.browser-history-menu { top: 51px; left: 410px; right: auto; max-width: calc(100% - 16px); }
+
+.start-menu { display: block; width: 382px; max-width: 100vw; min-height: 0; border: 2px solid #1854c2; border-radius: 6px 6px 0 0; background: #d3e5fa; }
+.start-menu-side { display: flex; align-items: center; gap: 11px; width: 100%; height: 66px; padding: 7px 10px; writing-mode: horizontal-tb; color: white; background: linear-gradient(#1764c6,#4393e6); border-bottom: 2px solid #efa548; box-shadow: inset 0 2px #76b0f7; font: bold 18px Tahoma,SimSun,sans-serif; text-shadow: 1px 1px #245282; }
+.start-menu-side img { width: 46px; height: 46px; object-fit: cover; border: 2px solid #daeaf9; border-radius: 4px; }
+.start-menu-main { display: grid; grid-template-columns: 55% 45%; grid-template-rows: 55px 55px 55px 45px auto; padding: 5px 0 0; background: linear-gradient(90deg,white 55%,#d3e5fa 55%); }
+.start-menu-main>button { width: 100%; background: transparent; padding: 5px 9px; }
+.start-browser { grid-area: 1 / 1; }
+.start-mail { grid-area: 2 / 1; }
+.start-documents { grid-area: 1 / 2; color: #173865 !important; font-weight: bold !important; border-left: 1px solid #a7c6e7 !important; }
+.start-notes { grid-area: 3 / 1; }
+.start-menu-rule { grid-area: 3 / 2; margin: 5px 12px; height: 1px; background: #a7c6e7; }
+.start-menu-main>.start-menu-desktop { grid-area: 2 / 2; }
+.start-menu-main>.start-menu-reset { grid-area: 5 / 1 / 6 / 3; min-height: 40px; justify-content: end; color: white; background: linear-gradient(#4a98e8,#1d6fd1); border-top: 1px solid #75b0ed; font: 12px Tahoma,SimSun,sans-serif; }
+.start-menu-reset-confirm { grid-area: 5 / 1 / 6 / 3; padding: 12px; border-top: 1px solid #6a94c4; background: #f4f7fc; }
+.start-menu-main>button:hover { color: white !important; background: #316ac5; }
+
+/* Sparse search home; dense left-aligned result page. No new search scopes. */
+.search-landing { width: min(760px,100%); padding: 72px 20px 40px; text-align: center; }
+.search-brand { display: flex; align-items: baseline; justify-content: center; gap: 10px; margin: 0 auto 62px; color: #d90000; letter-spacing: -1px; }
+.search-brand>b { font: bold 46px/1 Arial,sans-serif; }
+.search-brand>b>span { color: #1428a0; }
+.search-brand>strong { font: bold 42px/1 SimHei,SimSun,sans-serif; }
+.search-brand>small { font: 15px SimSun,serif; letter-spacing: 0; color: #1428a0; }
+.search-categories { display: flex; justify-content: center; gap: 24px; margin: 0 0 13px; color: #0000cc; font: 16px SimSun,serif; }
+.search-categories span { text-decoration: underline; }
+.search-categories b { color: #000; }
+.search-landing form { max-width: 650px; margin: auto; gap: 7px; }
+.search-home input { height: 31px; min-height: 31px; padding: 3px 6px; border: 1px solid #7f9db9; box-shadow: inset 1px 1px 2px #ddd; font: 16px Arial,SimSun,sans-serif; }
+.search-home button { height: 32px; min-width: 90px; border: 1px solid #777; border-radius: 0; color: #000; background: linear-gradient(white,#ddd); box-shadow: inset 1px 1px white; font: 15px SimSun,serif; }
+.search-home input:focus,.browser-address:focus { outline: 1px solid #7f9db9; outline-offset: 0; }
+.search-directory { margin: 30px 0 0; color: #0000cc; font: 14px SimSun,serif; }
+.search-home-footer { margin: 145px 0 0; color: #0000cc; font: 13px/2.5 Arial,SimSun,sans-serif; }
+.search-home-footer small { color: #7777b0; font: 12px Arial; }
+.search-results { width: 100%; margin: 0; padding: 18px 28px 45px; }
+.search-results-form { display: flex; width: min(820px,100%); padding: 0 0 18px; margin: 0; align-items: center; gap: 25px; }
+.search-results-form .search-brand { flex: 0 0 auto; margin: 0; gap: 4px; }
+.search-results-form .search-brand>b { font-size: 23px; }
+.search-results-form .search-brand>strong { font-size: 24px; }
+.search-results-form .search-brand>small { display: none; }
+.search-results-form>div:last-child { display: flex; flex: 1; }
+.search-results-form input { width: 100%; min-width: 0; }
+.query-line { margin: 0 -28px 22px; padding: 6px 28px; border-top: 1px solid #c9d7f1; background: #eef3ff; color: #555; font-size: 12px; }
+.search-no-results { width: min(650px,100%); margin: 14px 0; color: #222; font: 13px/1.5 Arial,SimSun,"宋体",sans-serif; }
+.result { width: min(650px,100%); margin-bottom: 21px; }
+.result h2 { font: normal 16px/1.4 Arial,SimSun,serif; }
+.result a { color: #0000cc; }
+.result .url { color: #008000; font: 12px/1.4 Arial,sans-serif; }
+.result p { color: #000; font: 13px/1.5 Arial,SimSun,serif; }
+
+/* Portal pages: white paper, compact system type, square channel modules. */
+.site-page { background: #fff; }
+.site-utility,.site-network-header,.site-breadcrumb,.site-page-grid,.site-footer { width: min(1000px,calc(100% - 24px)); }
+.site-utility { padding: 4px 0; background: #f5f5f5; color: #777; font: 12px/1.4 SimSun,serif; }
+.site-network-header { padding: 0; border: 0; background: white; box-shadow: none; }
+.site-brand-row { min-height: 79px; padding: 6px 4px; }
+.site-network-brand b { font: bold 26px SimSun,serif; color: #222; }
+.site-logo-mark { border: 0; box-shadow: none; font: bold italic 20px Arial,SimSun,serif; }
+.site-section-line { padding: 5px 8px; color: #555; border-top: 1px solid #ddd; font: 12px SimSun,serif; }
+.site-section-line em { display: none; }
+.site-network-header nav { min-height: 31px; padding: 0 10px; gap: 0; background: linear-gradient(#bc0920,#960013); border: 1px solid #80000c; box-shadow: inset 0 1px #e36069; }
+.site-network-header nav a { padding: 8px 22px; color: white; border: 0; background: none; font: bold 13px SimSun,serif; }
+.site-network-header nav a:hover,.site-network-header nav a.active { background: rgba(0,0,0,.16); }
+.site-network-meta { background: #f4f4f4; border-bottom: 1px solid #ddd; color: #777; }
+.site-page-grid { grid-template-columns: 130px minmax(0,1fr) 174px; gap: 10px; }
+.site-page-heading { border-color: #b20b1d; background: #f2f2f2; box-shadow: none; }
+.site-page-grid>.site-main-column>.old-page { padding: 16px 20px 45px; background: #fff; border-color: #ddd; box-shadow: none; }
+.site-page .old-page h1 { color: black; font: bold 24px/1.4 SimHei,SimSun,sans-serif; letter-spacing: 0; }
+.site-page .old-page p,.site-page .old-page li { color: #222; font: 14px/1.9 SimSun,serif; }
+.rail-module,.right-module { border-color: #d4d4d4; background: white; box-shadow: none; }
+.rail-module h2,.right-module h2 { background: linear-gradient(white,#eaeaea); color: #ad0015; border-color: #ddd; font: bold 13px SimSun,serif; }
+.site-promo { border-color: #afb9d1; background: #eef2ff; }
+.site-promo .promo-label { background: #2467a2; color: white; border: 0; font: bold 12px SimSun,serif; }
+.site-promo b { color: #ad0015; }
+.site-promo a { color: #0000cc; }
+.site-page .archive-photo { background: white; box-shadow: none; }
+.site-page .archive-photo img { filter: none; }
+.site-page.site-news .site-network-header nav { background: linear-gradient(#3b82b7,#23618f 55%,#184f7a); border-color: #1b5079; box-shadow: inset 0 1px #8bc1e2; }
+.site-page.site-news .site-network-header nav a:hover,.site-page.site-news .site-network-header nav a.active { background: rgba(0,0,0,.18); }
+.site-page.site-forum .site-network-header nav { background: linear-gradient(#4a97c8,#2877a8 55%,#1e628f); border-color: #175d88; box-shadow: inset 0 1px #9bd2ee; }
+.site-page.site-forum .site-network-header nav a:hover,.site-page.site-forum .site-network-header nav a.active { background: rgba(0,0,0,.2); }
+.site-page.site-archive .site-network-header nav { background: linear-gradient(#718c66,#526f4d 55%,#425e3e); border-color: #3c5737; box-shadow: inset 0 1px #b1c7a5; }
+.site-page.site-archive .site-network-header nav a:hover,.site-page.site-archive .site-network-header nav a.active { background: rgba(0,0,0,.2); }
+.site-page.site-generic .site-network-header nav { background: linear-gradient(#7a858b,#59666d 55%,#49555b); border-color: #465158; box-shadow: inset 0 1px #c2cbd0; }
+.site-page.site-generic .site-network-header nav a:hover,.site-page.site-generic .site-network-header nav a.active { background: rgba(0,0,0,.2); }
+.site-page .report-photo { background: #e8e5db; border-color: #adb2b3; }
+.site-page .report-photo img { max-height: 390px; object-fit: cover; }
+.site-page .attachment-photo { background: #f1ede3; border-color: #c9bda5; }
+.site-page .attachment-photo img { max-height: 330px; object-fit: cover; }
+.site-page .related-page { background: #f4f7fc; border-color: #c8d6e8; }
+
+/* BBS thread: separate user column and post column, not stacked blog cards. */
+.forum-thread-page .site-network-header { border-top: 0; }
+.forum-thread-page .site-network-brand b { color: #266b98; font: bold 29px SimHei,SimSun,sans-serif; }
+.forum-thread-page .site-logo-mark { color: #1677ad; background: transparent; font: bold italic 36px Arial; padding: 0 12px 0 0; }
+.forum-thread-page .site-network-header nav { border-color: #1467a4; background: linear-gradient(#439de0,#2775b7 55%,#1968a6); box-shadow: inset 0 1px #7ec4f3; }
+.forum-thread-page .site-network-header nav a { padding: 9px 24px; }
+.forum-thread-page .site-network-meta { background: #eaf1f6; padding: 10px; border: 1px solid #d7e3ec; }
+.forum-thread-page .site-page-grid { display: block; }
+.forum-thread-page .site-rail,.forum-thread-page .site-right-rail { display: none; }
+.forum-thread-page .site-page-heading { border: 1px solid #cad9e3; background: #edf3f7; padding: 9px 12px; }
+.forum-thread-page .site-page-heading small { display: none; }
+.forum-thread-page .site-main-column>.old-page { padding: 0 0 22px; border: 1px solid #c7d7e2; border-top: 0; }
+.forum-thread-page .site-masthead { display: none; }
+.forum-thread-page .old-page>h1 { font: bold 17px/1.4 SimSun,serif; margin: 0; padding: 17px 20px 10px; }
+.forum-thread-page .old-page>.byline { margin: 0; padding: 0 20px 13px; font-size: 12px; }
+.forum-thread-page .forum-post { border: 0; box-shadow: none; counter-reset: post; }
+.forum-thread-page .forum-body,.forum-thread-page .forum-reply { position: relative; counter-increment: post; min-height: 218px; padding: 46px 24px 32px 190px; border: 0; border-top: 4px solid #dbe7ef; background: linear-gradient(90deg,#eaf2f7 0,#eaf2f7 159px,#cddde7 159px,#cddde7 160px,white 160px); }
+.forum-thread-page .forum-body::before { content: attr(data-author); position: absolute; left: 15px; top: 17px; width: 134px; color: #2b536c; font: bold 12px/1.5 SimSun,serif; }
+.forum-thread-page .forum-body::after,.forum-thread-page .forum-reply::after { content: '注册会员'; position: absolute; left: 16px; top: 55px; width: 94px; height: 116px; padding-top: 93px; color: #516a7e; text-align: center; font: 12px/1.5 SimSun,serif; background: radial-gradient(ellipse 31px 26px at 50% 76px,#c2d2dd 98%,transparent),radial-gradient(circle 15px at 50% 27px,#c2d2dd 98%,transparent),linear-gradient(#f9fcff,#e0e9f0); background-size: 84px 84px; background-repeat: no-repeat; background-position: top center; border: 5px solid white; border-bottom: 0; box-shadow: 0 0 0 1px #d0dbe3; }
+.forum-thread-page .forum-reply .author { position: absolute; left: 15px; top: 17px; width: 135px; color: #2b536c; font: bold 12px/1.5 SimSun,serif; overflow-wrap: anywhere; }
+.forum-thread-page .forum-body>p:first-child::before,.forum-thread-page .forum-reply>p:first-of-type::before { content: '发表于旧帖存档　　　　　　　　　　　　　　　　　' counter(post) ' 楼'; display: block; margin: -30px 0 22px; padding: 0 0 9px; border-bottom: 1px dashed #d6d6d6; color: #999; font: 12px/1.4 SimSun,serif; }
+.forum-thread-page .forum-reply p,.forum-thread-page .forum-body p { font: 14px/1.9 SimSun,serif; margin-bottom: 12px; }
+.forum-thread-page .related-page { margin: 15px 18px; }
+
+@media(max-width:800px) {
+  .site-page-grid { grid-template-columns: minmax(0,1fr) 160px; }
+  .site-rail { display: none; }
+  .site-right-rail { display: block; }
+  .search-brand>b { font-size: 36px; }
+  .search-brand>strong { font-size: 32px; }
+  .search-results-form { gap: 12px; }
+}
+@media(max-width:600px) {
+  .ie-favorites,.ie-search-tool,.ie-links { display: none; }
+  .ie-toolbar { gap: 0; }
+  .ie-toolbar .browser-history-button { margin-left: auto; }
+  .browser-history-menu { left: auto; right: 5px; }
+  .search-landing { padding-top: 45px; }
+  .search-brand { margin-bottom: 42px; }
+  .search-categories { gap: 15px; font-size: 14px; }
+  .search-results-form { display: block; }
+  .search-results-form .search-brand { justify-content: start; margin-bottom: 12px; }
+  .site-page-grid { display: block; }
+  .site-right-rail { display: none; }
+  .site-network-header nav a { padding: 8px 12px; }
+  .forum-thread-page .forum-body,.forum-thread-page .forum-reply { padding-left: 120px; padding-right: 12px; background: linear-gradient(90deg,#eaf2f7 0,#eaf2f7 99px,#cddde7 99px,#cddde7 100px,white 100px); }
+  .forum-thread-page .forum-reply .author,.forum-thread-page .forum-body::before { left: 8px; width: 85px; }
+  .forum-thread-page .forum-body::after,.forum-thread-page .forum-reply::after { left: 8px; width: 78px; }
+}
+
+/* Final visual pass: keep the notebook a convincing fixed-size XP desktop.
+   Older IE/OE windows did not turn into mobile cards when the viewport was
+   narrow; the surrounding browser simply exposed a horizontal scroll bar. */
+.computer .window-body {
+  scrollbar-color: #a7b3c1 #ece9d8;
+  scrollbar-width: auto;
+}
+.computer .window-body::-webkit-scrollbar,
+.computer .site-page::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+.computer .window-body::-webkit-scrollbar-track,
+.computer .site-page::-webkit-scrollbar-track {
+  border: 1px solid #aca899;
+  background: #ece9d8;
+}
+.computer .window-body::-webkit-scrollbar-thumb,
+.computer .site-page::-webkit-scrollbar-thumb {
+  border: 1px solid #7c8792;
+  background: linear-gradient(90deg, #d7e1ec, #aab7c6 48%, #c8d2dd);
+  box-shadow: inset 1px 1px #f7fbff, inset -1px -1px #8997a7;
+}
+.computer .window-body::-webkit-scrollbar-button:single-button,
+.computer .site-page::-webkit-scrollbar-button:single-button {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #aca899;
+  background: #d9e2eb;
+}
+.computer .window[aria-label="我的文档"] .tiny-icon {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  background: transparent url('./assets/xp-original/shell-235.ico') center / contain no-repeat;
+  box-shadow: none;
+}
+.computer .browser-layout,
+.computer .mail-layout,
+.computer .documents {
+  min-width: 700px;
+}
+.computer .site-page {
+  min-width: 760px;
+}
+.computer .site-page-grid,
+.computer .site-network-header,
+.computer .site-utility,
+.computer .site-breadcrumb,
+.computer .site-footer {
+  min-width: 700px;
+}
+
+/* Outlook Express 6 fidelity pass.
+   The application still exposes only the routes that exist in the story, but
+   the shell now follows the dense XP-era OE proportions: Tahoma/宋体 chrome,
+   11–13px mail text, compact folder rows, and a real toolbar/status rhythm. */
+:root {
+  font-family: Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.computer,
+.computer button,
+.computer input,
+.computer select,
+.computer textarea {
+  font-family: Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.computer .window[aria-label="Outlook Express"] {
+  border-color: #0054d8;
+  background: #ece9d8;
+}
+
+.computer .window[aria-label="Outlook Express"] .menu-bar {
+  min-height: 23px;
+  height: 23px;
+  gap: 18px;
+  padding: 3px 9px;
+  color: #111;
+  border-bottom-color: #aaa899;
+  background: #ece9d8;
+  font: 11px/16px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.computer .window[aria-label="Outlook Express"] .window-body {
+  background: #fff;
+}
+
+.start-user-avatar {
+  display: block;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  border: 2px solid #daeaf9;
+  border-radius: 4px;
+  background: #3a78be url('./assets/xp-original/user.png') center / cover no-repeat;
+  box-shadow: inset 1px 1px rgba(255,255,255,.35);
+}
+
+.mail-layout {
+  grid-template-columns: 188px minmax(0, 1fr);
+  color: #111;
+  background: #fff;
+}
+
+.mail-sidebar {
+  padding: 0;
+  border-right: 1px solid #8f8f8f;
+  background: #f3f3ed;
+  font: 11px/16px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.mail-sidebar h2 {
+  margin: 0;
+  padding: 6px 8px 4px;
+  color: #333;
+  border-bottom: 1px solid #c3c3bd;
+  background: linear-gradient(#fafaf6, #dfdfd7);
+  font: bold 11px/16px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.oe-folder-root,
+.oe-folder-group {
+  padding: 5px 8px 3px;
+  color: #1b1b1b;
+  font: bold 11px/16px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.oe-folder-root span,
+.oe-folder-group span {
+  display: inline-block;
+  width: 13px;
+  color: #555;
+  font: 12px/12px Arial, sans-serif;
+}
+
+.oe-folder-list {
+  padding: 0 0 5px;
+  border-bottom: 1px solid #c3c3bd;
+}
+
+.folder-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 24px;
+  padding: 3px 7px 3px 35px;
+  color: #222;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  font: 11px/16px Tahoma, SimSun, "宋体", sans-serif;
+  text-align: left;
+}
+
+.folder-button.active,
+.folder-button:hover:not(:disabled) {
+  color: #fff;
+  border-color: #194d9a;
+  background: linear-gradient(#6da1df, #2e68b4);
+}
+
+.folder-button:disabled {
+  color: #888;
+  cursor: default;
+}
+
+.oe-folder-icon {
+  position: absolute;
+  top: 4px;
+  left: 14px;
+  display: block;
+  width: 15px;
+  height: 13px;
+  border: 1px solid #8b7029;
+  border-radius: 1px;
+  background: linear-gradient(#f9db7b 0 27%, #d4aa37 28% 100%);
+  box-shadow: inset 1px 1px rgba(255,255,255,.65);
+}
+
+.oe-folder-inbox { border-color: #4c739b; background: linear-gradient(#d9f0ff, #6a9bc6); }
+.oe-folder-draft { border-color: #777; background: linear-gradient(#fff, #d4d4d4); }
+.oe-folder-sent { border-color: #64845e; background: linear-gradient(#dcf0d7, #78a56f); }
+.oe-folder-trash { border-color: #777; background: linear-gradient(135deg, #ddd 0 49%, #999 50% 55%, #ddd 56%); }
+.oe-folder-archive { border-color: #77624c; background: linear-gradient(#eedfc0, #b69162); }
+
+.folder-button.active .oe-folder-icon {
+  filter: brightness(1.12) saturate(.85);
+}
+
+.oe-folder-footer {
+  padding: 8px 13px;
+  color: #555;
+  font: 11px/16px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.oe-folder-footer span { color: #888; }
+
+.mail-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.mail-toolbar {
+  display: block;
+  padding: 0;
+  border-bottom: 1px solid #9a9a92;
+  background: #ece9d8;
+  font: 11px/13px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.oe-toolbar-row {
+  display: flex;
+  align-items: stretch;
+  height: 49px;
+  padding: 1px 4px;
+  border-bottom: 1px solid #d1cec3;
+  box-shadow: inset 0 1px #fff;
+}
+
+.oe-tool {
+  display: inline-flex;
+  flex: 0 0 62px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1px;
+  height: 46px;
+  padding: 2px 2px 1px;
+  color: #111;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: transparent;
+  font: 10px/12px Tahoma, SimSun, "宋体", sans-serif;
+  text-align: center;
+}
+
+.oe-tool-action { cursor: pointer; }
+.oe-tool-action:hover { border-color: #b4b0a5; box-shadow: inset 1px 1px #fff; }
+.oe-tool-action:active { border-color: #9b978d; background: #dcd9ce; box-shadow: inset 1px 1px #aaa79c; }
+
+.oe-tool-icon {
+  position: relative;
+  display: block;
+  width: 27px;
+  height: 28px;
+  color: #2c6fa9;
+  font: normal 23px/27px Arial, sans-serif;
+  text-align: center;
+}
+
+.oe-toolbar-separator {
+  flex: 0 0 2px;
+  height: 37px;
+  margin: 5px 3px 0;
+  border-left: 1px solid #b6b2a8;
+  border-right: 1px solid #fff;
+}
+
+.mail-search-row {
+  display: flex;
+  align-items: center;
+  min-height: 27px;
+  padding: 3px 7px;
+  border-top: 1px solid #fff;
+  background: #f5f3ea;
+}
+
+.mail-search-label {
+  flex: 0 0 auto;
+  color: #4d4d47;
+  font: 11px/20px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.search-box {
+  display: flex;
+  width: min(340px, 52%);
+  margin-left: 5px;
+}
+
+.search-box input {
+  min-width: 0;
+  flex: 1;
+  height: 21px;
+  min-height: 21px;
+  padding: 2px 4px;
+  border: 1px solid #7f9db9;
+  border-radius: 0;
+  box-shadow: inset 1px 1px #d4d4d4;
+  font: 11px/15px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.search-box button {
+  min-width: 45px;
+  height: 21px;
+  padding: 1px 6px;
+  color: #111;
+  border: 1px solid #7f9db9;
+  border-left: 0;
+  border-radius: 0;
+  background: linear-gradient(#fff, #dedede);
+  font: 11px/17px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.search-box .search-history-toggle {
+  min-width: 19px;
+  padding: 1px 3px;
+  color: #3d5b77;
+}
+
+.mail-search-history {
+  position: absolute;
+  z-index: 20;
+  margin-top: 0;
+  margin-left: 78px;
+  padding: 4px;
+  border: 1px solid #7f9db9;
+  background: #fff;
+  box-shadow: 2px 2px 3px rgba(0,0,0,.25);
+  font: 11px/17px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.mail-current-group,
+.mail-content > .message-view {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.mail-cache-heading {
+  min-height: 23px;
+  padding: 5px 7px 3px;
+  color: #333;
+  border-bottom: 1px solid #c4c4bc;
+  background: linear-gradient(#fafaf8, #e5e5df);
+  font: bold 11px/14px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.mail-cache-heading span {
+  margin-left: 10px;
+  color: #777;
+  font-weight: normal;
+}
+
+.mail-list {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: #111;
+  font: 11px/15px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.mail-list th {
+  height: 22px;
+  padding: 3px 6px;
+  color: #333;
+  border: 1px solid #bdbdb7;
+  border-top: 0;
+  background: linear-gradient(#fafafa, #deded8);
+  font: normal 10px/14px Tahoma, SimSun, "宋体", sans-serif;
+  text-align: left;
+}
+
+.mail-list td {
+  height: 23px;
+  padding: 3px 6px;
+  overflow: hidden;
+  color: #111;
+  border-bottom: 1px solid #e4e4e0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mail-list tbody tr:hover { background: #dceaf8; }
+.mail-list .from { width: 23%; }
+.mail-list .date { width: 16%; color: #666; }
+.mail-subject-button { font: inherit; }
+
+.message-view {
+  max-width: none;
+  padding: 13px 22px 30px;
+  color: #111;
+  background: #fff;
+}
+
+.message-meta {
+  margin-bottom: 10px;
+  padding: 7px 9px;
+  border: 1px solid #c7c7c0;
+  background: #f2f2ec;
+  font: 11px/16px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.message-meta h1 {
+  margin: 0 0 6px;
+  color: #111;
+  font: bold 15px/20px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.message-meta b { min-width: 49px; color: #555; }
+
+.thread-item {
+  padding: 11px 9px;
+  border-bottom: 1px solid #d6d6d1;
+}
+
+.thread-item .sender {
+  margin-bottom: 6px;
+  color: #244b73;
+  font: bold 11px/16px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.thread-item .date { margin-left: 8px; color: #777; font-size: 10px; font-weight: normal; }
+.thread-item p { margin: 0 0 7px; font: 13px/1.72 SimSun, "宋体", serif; white-space: pre-line; }
+
+.oe-statusbar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-height: 19px;
+  border-top: 1px solid #aaa99f;
+  background: #ece9d8;
+  color: #333;
+  font: 10px/16px Tahoma, SimSun, "宋体", sans-serif;
+}
+
+.oe-statusbar span {
+  min-width: 92px;
+  padding: 1px 7px;
+  border-right: 1px solid #c6c3b9;
+  box-shadow: inset 1px 0 #fff;
+}
+
+.oe-statusbar span + span { min-width: 70px; }
+
+/* Web snapshots and documents used to be much denser than the current
+   generous reading layout. Keep the story readable, but restore period scale. */
+.site-page .old-page p,
+.site-page .old-page li { font: 13px/1.72 SimSun, "宋体", serif; }
+.site-page .old-page h1 { font-size: 22px; }
+.site-page .forum-thread-page .forum-body p,
+.site-page .forum-thread-page .forum-reply p { font: 13px/1.72 SimSun, "宋体", serif; }
+.search-results .result p { font: 13px/1.58 SimSun, "宋体", serif; }
+.search-results .result h2 { font-size: 16px; }
+.document-paper p,
+.notes p { font: 14px/1.78 SimSun, "宋体", serif; }
+.document-paper h1,
+.notes h1 { font-size: 21px; }
+
+/* Native-looking disabled controls matter for the final-gate read. */
+.system-button:disabled,
+.system-button[aria-disabled="true"] {
+  color: #777;
+  border-color: #aaa9a2;
+  background: linear-gradient(#f7f7f4, #d8d8d2);
+  box-shadow: inset 1px 1px #fff;
+  filter: none;
+  cursor: default;
+  text-shadow: none;
+}
+
+@media (max-width: 720px) {
+  .oe-toolbar-row { width: 700px; }
+  .mail-search-row { width: 700px; }
+  .mail-sidebar { display: block; }
+  .mail-toolbar { min-width: 700px; }
+}
+
+/* Reference-faithful application chrome.
+   Use the original bitmap assets wherever a period prototype exists; the
+   fictional pages below keep the same restrained IE6/XP-era system grammar. */
+.computer .window[aria-label="Outlook Express"] {
+  border-color: #0054d8;
+  background: #c0c0c0;
+}
+.computer .window[aria-label="Outlook Express"] .window-titlebar {
+  min-height: 27px;
+  border-radius: 7px 7px 0 0;
+  background: linear-gradient(#2c7fd4 0, #0754be 45%, #00399f 100%);
+  font: bold 13px/27px Tahoma, SimSun, "宋体", sans-serif;
+}
+.computer .window[aria-label="Outlook Express"] .menu-bar {
+  height: 25px;
+  min-height: 25px;
+  gap: 22px;
+  padding: 4px 11px 3px;
+  border-bottom: 1px solid #888;
+  background: #c0c0c0;
+  font: 12px/17px Tahoma, SimSun, "宋体", sans-serif;
+}
+.computer .window[aria-label="Outlook Express"] .window-body {
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #c0c0c0;
+}
+.oe-client {
+  display: flex;
+  min-width: 700px;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  color: #000;
+  background: #c0c0c0;
+  font-family: Tahoma, SimSun, "宋体", sans-serif;
+}
+.oe-client > .mail-toolbar {
+  flex: 0 0 auto;
+  min-width: 700px;
+  padding: 0;
+  border-bottom: 1px solid #808080;
+  background: #c0c0c0;
+}
+.oe-toolbar-row {
+  display: flex;
+  align-items: stretch;
+  height: 56px;
+  min-width: 700px;
+  padding: 1px 5px 0;
+  border-bottom: 1px solid #808080;
+  background: #c0c0c0;
+  box-shadow: inset 0 1px #fff;
+}
+.oe-tool {
+  display: inline-flex;
+  flex: 0 0 70px;
+  height: 54px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 1px 2px 0;
+  color: #000;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  font: 12px/17px Tahoma, SimSun, "宋体", sans-serif;
+  text-align: center;
+}
+.oe-tool-action:hover { border-color: #777; background: #d7d7d7; box-shadow: inset 1px 1px #fff; }
+.oe-tool-action:active { border-color: #444; background: #a9a9a9; box-shadow: inset 1px 1px #666; }
+.oe-tool-icon {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin: 0 auto;
+  background-image: url('./assets/oe-reference-p1.jpg');
+  background-repeat: no-repeat;
+  background-size: 855px 479px;
+  color: transparent;
+  font-size: 0;
+}
+.oe-tool-icon::before { content: none !important; display: none !important; }
+/* Coordinates are from the supplied native 855px Outlook Express reference. */
+.oe-icon-compose { background-position: -29px -49px; }
+.oe-icon-reply { background-position: -113px -49px; }
+.oe-icon-replyall { background-position: -182px -49px; }
+.oe-icon-forward { background-position: -251px -49px; }
+.oe-icon-print { background-position: -322px -49px; }
+.oe-icon-delete { background-position: -389px -49px; }
+.oe-icon-sendrecv { background-position: -470px -49px; }
+.oe-icon-address { background-position: -569px -49px; }
+.oe-icon-find { background-position: -641px -49px; }
+.oe-toolbar-separator {
+  flex: 0 0 2px;
+  height: 42px;
+  margin: 5px 5px 0;
+  border-left: 1px solid #888;
+  border-right: 1px solid #fff;
+}
+.mail-search-row {
+  display: flex;
+  align-items: center;
+  min-width: 700px;
+  min-height: 28px;
+  padding: 2px 7px;
+  border-top: 1px solid #fff;
+  background: #d4d0c8;
+  font: 12px/22px Tahoma, SimSun, "宋体", sans-serif;
+}
+.mail-search-label { color: #111; font: 12px/22px Tahoma, SimSun, "宋体", sans-serif; }
+.search-box { width: min(390px, 62%); margin-left: 5px; }
+.search-box input { height: 22px; min-height: 22px; padding: 2px 4px; border: 1px solid #7f9db9; border-radius: 0; font: 12px/16px Tahoma, SimSun, "宋体", sans-serif; }
+.search-box button { height: 22px; min-width: 50px; padding: 1px 6px; border: 1px solid #7f9db9; border-left: 0; border-radius: 0; background: linear-gradient(#fff, #d9d9d9); font: 12px/17px Tahoma, SimSun, "宋体", sans-serif; }
+.search-box .search-history-toggle { min-width: 20px; padding: 1px 3px; font-size: 10px; }
+.oe-folder-caption {
+  display: flex;
+  flex: 0 0 27px;
+  align-items: center;
+  gap: 6px;
+  min-width: 700px;
+  padding: 0 7px;
+  color: #fff;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #666;
+  background: #858589;
+  font: bold 16px/25px SimSun, "宋体", serif;
+}
+.oe-caption-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url('./assets/oe-reference-p1.jpg') -3px -101px / 855px 479px no-repeat;
+}
+.oe-client > .mail-layout,
+.oe-client > .oe-folder-caption + .mail-layout {
+  display: grid;
+  flex: 1 1 auto;
+  min-height: 0;
+  grid-template-columns: 214px minmax(0, 1fr);
+  overflow: hidden;
+  background: #fff;
+}
+.mail-sidebar {
+  min-width: 0;
+  padding: 0;
+  overflow: hidden auto;
+  border-right: 1px solid #808080;
+  background: #f3f3f3;
+  font: 12px/17px Tahoma, SimSun, "宋体", sans-serif;
+}
+.mail-sidebar h2 {
+  position: relative;
+  margin: 0;
+  padding: 2px 5px;
+  color: #000;
+  border: 1px solid #8b8b8b;
+  background: #c0c0c0;
+  font: bold 12px/19px Tahoma, SimSun, "宋体", sans-serif;
+}
+.mail-sidebar h2::after {
+  content: "×";
+  position: absolute;
+  top: 0;
+  right: 4px;
+  color: #222;
+  font: bold 14px/19px Arial, sans-serif;
+}
+.oe-folder-root,
+.oe-folder-group { padding: 3px 6px 2px; color: #111; font: 12px/18px Tahoma, SimSun, "宋体", sans-serif; }
+.oe-folder-root span,
+.oe-folder-group span { display: inline-block; width: 14px; color: #222; font: 12px/14px Arial, sans-serif; }
+.oe-folder-list { padding: 0 0 6px; border-bottom: 1px solid #c0c0c0; }
+.folder-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 24px;
+  padding: 2px 5px 2px 31px;
+  color: #111;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font: 12px/19px Tahoma, SimSun, "宋体", sans-serif;
+  text-align: left;
+}
+.folder-button.active,
+.folder-button:hover:not(:disabled) { color: #fff; border: 0; background: #000080; }
+.folder-button:disabled { color: #777; }
+.oe-folder-icon {
+  position: absolute;
+  top: 3px;
+  left: 10px;
+  display: block;
+  width: 17px;
+  height: 17px;
+  border: 0;
+  border-radius: 0;
+  background: url('./assets/xp-original/shell-235.ico') center / contain no-repeat;
+  box-shadow: none;
+}
+.oe-folder-inbox { background-image: url('./assets/xp-original/mail.png'); }
+.oe-folder-draft { background-image: url('./assets/xp-original/shell-235.ico'); }
+.oe-folder-sent { background-image: url('./assets/xp-original/forward.png'); }
+.oe-folder-trash { background-image: url('./assets/xp-original/stop.png'); }
+.oe-folder-archive { background-image: url('./assets/xp-original/ie-paper.png'); }
+.oe-folder-footer { padding: 8px 10px; color: #555; font: 12px/17px Tahoma, SimSun, "宋体", sans-serif; }
+.oe-folder-footer span { color: #777; }
+.mail-content {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+}
+.mail-content > .mail-current-group,
+.mail-content > .message-view,
+.mail-content > .detail-panel,
+.mail-content > .legacy-archive { min-height: 0; overflow: auto; }
+.mail-cache-heading { min-height: 25px; padding: 4px 7px; color: #111; border-bottom: 1px solid #888; background: #d4d0c8; font: bold 12px/17px Tahoma, SimSun, "宋体", sans-serif; }
+.mail-cache-heading span { color: #555; font: 11px/17px Tahoma, SimSun, "宋体", sans-serif; }
+.mail-list { width: 100%; border-collapse: collapse; color: #000; font: 12px/17px Tahoma, SimSun, "宋体", sans-serif; }
+.mail-list th { height: 22px; padding: 2px 6px; color: #000; border: 1px solid #8b8b8b; border-top: 0; background: #c0c0c0; font: bold 12px/17px Tahoma, SimSun, "宋体", sans-serif; }
+.mail-list td { height: 22px; padding: 2px 6px; border-bottom: 1px solid #d5d5d5; font: 12px/17px Tahoma, SimSun, "宋体", sans-serif; }
+.mail-list tbody tr:hover { background: #dbe8ff; }
+.mail-list tbody tr.mail-no-results:hover { background: transparent; }
+.mail-list .mail-no-results td { height: 34px; padding: 6px 8px; color: #555; font: 12px/17px Tahoma, SimSun, "宋体", sans-serif; text-align: left; white-space: normal; }
+.message-view { max-width: none; padding: 14px 22px 28px; background: #fff; }
+.message-meta { margin-bottom: 9px; padding: 6px 8px; border: 1px solid #aaa; background: #eee; font: 12px/18px Tahoma, SimSun, "宋体", sans-serif; }
+.message-meta h1 { margin: 0 0 5px; font: bold 16px/22px Tahoma, SimSun, "宋体", sans-serif; }
+.thread-item { padding: 10px 8px; border-bottom: 1px solid #d0d0d0; }
+.thread-item .sender { color: #000080; font: bold 12px/18px Tahoma, SimSun, "宋体", sans-serif; }
+.thread-item .date { color: #666; font-size: 11px; font-weight: normal; }
+.thread-item p { margin: 0 0 7px; font: 14px/1.72 SimSun, "宋体", serif; white-space: pre-line; }
+.oe-statusbar { display: flex; flex: 0 0 21px; align-items: center; min-height: 21px; border-top: 1px solid #808080; background: #c0c0c0; color: #111; font: 11px/18px Tahoma, SimSun, "宋体", sans-serif; }
+.oe-statusbar span { min-width: 108px; padding: 1px 6px; border-right: 1px solid #fff; box-shadow: inset -1px 0 #888; }
+.oe-statusbar span + span { min-width: 72px; }
+
+/* Explorer shell around the game's document artifacts. */
+.documents { grid-template-columns: 198px minmax(0, 1fr); min-width: 700px; background: #fff; }
+.document-tree { overflow: hidden auto; border-right: 1px solid #808080; background: #f3f3f3; }
+.document-tree h2 { margin: 0; padding: 4px 8px; border: 1px solid #8b8b8b; background: #c0c0c0; font: bold 12px/18px Tahoma, SimSun, "宋体", sans-serif; }
+.document-tree button { position: relative; display: block; width: 100%; min-height: 28px; padding: 4px 6px 4px 30px; border: 0; border-bottom: 1px solid #e0e0e0; background: transparent; color: #222; font: 12px/19px Tahoma, SimSun, "宋体", sans-serif; text-align: left; }
+.document-tree button::before { content: ""; position: absolute; top: 5px; left: 8px; width: 17px; height: 17px; background: url('./assets/xp-original/shell-235.ico') center / contain no-repeat; }
+.document-tree button[data-document$="case-review"]::before,
+.document-tree button[data-document$="enrollment-directory"]::before { background-image: url('./assets/xp-original/ie-paper.png'); }
+.document-tree button.active,
+.document-tree button:hover { color: #fff; background: #316ac5; }
+.documents-main { display: flex; min-width: 0; min-height: 0; flex-direction: column; overflow: hidden; background: #fff; }
+.documents-toolbar { display: flex; flex: 0 0 47px; align-items: center; gap: 3px; padding: 2px 6px; border-bottom: 1px solid #888; background: #c0c0c0; box-shadow: inset 0 1px #fff; }
+.explorer-tool { display: inline-flex; width: 45px; height: 42px; flex-direction: column; align-items: center; justify-content: flex-start; gap: 0; border: 1px solid transparent; color: #111; font: 11px/15px Tahoma, SimSun, "宋体", sans-serif; }
+.explorer-tool-wide { width: 52px; }
+.explorer-tool:hover { border-color: #777; background: #d7d7d7; }
+.explorer-icon { display: block; width: 28px; height: 28px; background: center / contain no-repeat; }
+.explorer-back { background-image: url('./assets/xp-original/back.png'); }
+.explorer-forward { background-image: url('./assets/xp-original/forward.png'); }
+.explorer-up { background-image: url('./assets/xp-original/home.png'); }
+.explorer-search { background-image: url('./assets/xp-original/search.png'); }
+.explorer-folders { background-image: url('./assets/xp-original/favorite.png'); }
+.explorer-views { background-image: url('./assets/xp-original/history.png'); }
+.explorer-separator { width: 2px; height: 31px; margin: 0 3px; border-left: 1px solid #888; border-right: 1px solid #fff; }
+.documents-address { display: flex; flex: 0 0 27px; align-items: center; gap: 6px; padding: 2px 6px; border-bottom: 1px solid #888; background: #d4d0c8; color: #111; font: 12px/21px Tahoma, SimSun, "宋体", sans-serif; }
+.documents-address-field { display: flex; min-width: 0; flex: 1; align-items: center; height: 21px; padding: 0 3px; border: 1px solid #7f9db9; background: #fff; box-shadow: inset 1px 1px #ddd; }
+.documents-address-field span { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.documents-address-field b { padding: 0 3px; color: #244c80; font: 10px Arial, sans-serif; }
+.documents-address-icon { width: 16px; height: 16px; margin-right: 4px; background: url('./assets/xp-original/shell-235.ico') center / contain no-repeat; }
+.document-paper { flex: 1 1 auto; min-height: 0; overflow: auto; padding: 30px; background: #fff; }
+
+/* Notepad remains a plain text editor, with the XP status strip restored. */
+.notepad-client { display: flex; min-width: 700px; height: 100%; min-height: 0; flex-direction: column; background: #fff; }
+.notes { flex: 1 1 auto; min-height: 0; overflow: auto; margin: 0; padding: 14px 18px 24px; color: #000; background: #fff; font: 13px/1.55 Tahoma, SimSun, "宋体", sans-serif; }
+.notes h1 { margin: 0 0 13px; color: #000; font: 16px/22px SimSun, "宋体", serif; }
+.notes h2 { margin: 0 0 5px; color: #000; font: 13px/19px SimSun, "宋体", serif; }
+.notes .faint { color: #666; font: 12px/18px SimSun, "宋体", serif; }
+.notes section { max-width: 760px; }
+.notes .investigation-log { margin: 9px 0; padding: 0; border-top: 1px solid #c0c0c0; list-style: none; }
+.notes .investigation-log li { display: grid; grid-template-columns: 170px minmax(0, 1fr); padding: 4px 0; border-bottom: 1px solid #e0e0e0; font: 12px/18px SimSun, "宋体", serif; }
+.notes .investigation-log b { font-weight: normal; }
+.notes textarea { width: min(720px, 100%); min-height: 150px; padding: 5px; border: 1px solid #7f9db9; border-radius: 0; background: #fff; color: #000; font: 13px/1.55 SimSun, "宋体", serif; resize: vertical; }
+.notes .system-button { border: 1px solid #7f7f7f; border-radius: 0; background: linear-gradient(#fff, #d6d6d6); color: #000; font: 12px/20px Tahoma, SimSun, "宋体", sans-serif; }
+.notepad-statusbar { display: flex; flex: 0 0 21px; align-items: center; gap: 0; border-top: 1px solid #888; background: #c0c0c0; color: #333; font: 11px/18px Tahoma, SimSun, "宋体", sans-serif; }
+.notepad-statusbar span { padding: 1px 8px; border-right: 1px solid #888; }
+
+/* Keep compact controls readable at the narrow in-app viewport without
+   turning the period applications into modern stacked cards. */
+@media (max-width: 720px) {
+  .oe-client, .documents, .notepad-client { min-width: 700px; }
+  .oe-client > .mail-layout { grid-template-columns: 214px minmax(0, 1fr); }
+  .documents { grid-template-columns: 198px minmax(0, 1fr); }
+  .documents-toolbar { min-width: 700px; }
+}
+
+/* Small corrective pass from the native XP/OE comparison.  Keep the
+   reference bitmap for the icons, but never let its original text row bleed
+   into the live labels. */
+.oe-tool {
+  flex-basis: 78px;
+  width: 78px;
+  white-space: nowrap;
+}
+.oe-tool > span { display: block; width: 100%; white-space: nowrap; text-align: center; }
+.oe-tool-icon {
+  width: 34px;
+  height: 25px;
+  margin: 0;
+  /* The reference JPG is a screenshot, so its label row sits immediately
+     below the artwork.  Stop the crop before that row; the live toolbar is
+     icon-only and must not duplicate or bleed any source text. */
+  background-position-y: -53px;
+}
+.oe-tool > span { display: none; }
+.oe-tool { justify-content: center; }
+
+/* Use the complete native OE toolbar cells.  These crops include the
+   original icon, its original caption, and the period-accurate spacing; no
+   live CSS/HTML text is layered over them. */
+.oe-client > .mail-toolbar,
+.oe-toolbar-row { min-width: 750px; }
+.oe-tool {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 0;
+  height: 54px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+.oe-tool-icon {
+  display: block;
+  height: 43px;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+}
+.oe-icon-compose { width: 102px; background-image: url('./assets/oe-cells/compose.png'); }
+.oe-icon-reply { width: 71px; background-image: url('./assets/oe-cells/reply.png'); }
+.oe-icon-replyall { width: 71px; background-image: url('./assets/oe-cells/replyall.png'); }
+.oe-icon-forward { width: 63px; background-image: url('./assets/oe-cells/forward.png'); }
+.oe-icon-print { width: 77px; background-image: url('./assets/oe-cells/print.png'); }
+.oe-icon-delete { width: 69px; background-image: url('./assets/oe-cells/delete.png'); }
+.oe-icon-sendrecv { width: 93px; background-image: url('./assets/oe-cells/sendrecv.png'); }
+.oe-icon-address { width: 80px; background-image: url('./assets/oe-cells/address.png'); }
+.oe-icon-find { width: 87px; background-image: url('./assets/oe-cells/find.png'); }
+
+/* The real OE toolbar is one continuous raster strip.  Use that strip as the
+   visible layer so every icon, caption, arrow, separator, shade, and baseline
+   shares exactly the same source pixels.  The live controls remain as
+   transparent hit areas over the corresponding original cells. */
+.oe-client > .mail-toolbar,
+.oe-toolbar-row {
+  min-width: 855px;
+}
+.oe-toolbar-row {
+  position: relative;
+  display: block;
+  width: 855px;
+  height: 56px;
+  padding: 0;
+  background: #c4c4c4 url('./assets/oe-toolbar-composite.png') no-repeat 0 0;
+  background-size: 855px 43px;
+  box-shadow: inset 0 1px #fff;
+}
+.oe-toolbar-row > .oe-tool {
+  position: absolute;
+  top: 0;
+  height: 43px;
+  padding: 0;
+  border: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+  z-index: 2;
+}
+.oe-toolbar-row > .oe-tool:hover,
+.oe-toolbar-row > .oe-tool:active,
+.oe-toolbar-row > .oe-tool:focus {
+  border: 0;
+  outline: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.oe-toolbar-row > .oe-tool > .oe-tool-icon {
+  display: block;
+  width: 100% !important;
+  height: 43px;
+  margin: 0;
+  background: none !important;
+  opacity: 0;
+}
+.oe-toolbar-row > .oe-tool > span { display: none; }
+.oe-toolbar-row > .oe-toolbar-separator { display: none; }
+.oe-toolbar-row > .oe-tool:nth-child(1) { left: 4px; width: 102px; }
+.oe-toolbar-row > .oe-tool:nth-child(2) { left: 106px; width: 71px; }
+.oe-toolbar-row > .oe-tool:nth-child(3) { left: 177px; width: 71px; }
+.oe-toolbar-row > .oe-tool:nth-child(4) { left: 248px; width: 63px; }
+.oe-toolbar-row > .oe-tool:nth-child(5) { left: 313px; width: 77px; }
+.oe-toolbar-row > .oe-tool:nth-child(6) { left: 390px; width: 69px; }
+.oe-toolbar-row > .oe-tool:nth-child(8) { left: 461px; width: 93px; cursor: pointer; }
+.oe-toolbar-row > .oe-tool:nth-child(9) { left: 556px; width: 80px; cursor: pointer; }
+.oe-toolbar-row > .oe-tool:nth-child(11) { left: 636px; width: 87px; }
+
+/* The news site is fictional, but its masthead is still a period web banner:
+   upright type, balanced padding, and no text pressed against the frame. */
+.site-news .site-logo-mark {
+  box-sizing: border-box;
+  width: 64px;
+  height: 56px;
+  padding: 8px;
+  border-radius: 3px;
+  transform: none;
+  color: #fff;
+  font: bold 18px/1.15 SimSun, "宋体", serif;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1.15;
+  white-space: normal;
+  text-align: center;
+}
+
+/* XP-style My Documents: the contents are files, not an explanatory landing page. */
+.documents-side {
+  overflow: auto;
+  border-right: 1px solid #808080;
+  background: linear-gradient(#edf4fb, #d7e5f1);
+  padding: 10px 8px;
+  color: #1f1f1f;
+  font: 12px/1.5 Tahoma, SimSun, sans-serif;
+}
+
+.documents-side section {
+  margin-bottom: 18px;
+  padding: 6px 7px 10px;
+  border: 1px solid #c5c5c5;
+  background: #f4f4f4;
+}
+
+.documents-side h2 {
+  margin: 0 -7px 6px;
+  padding: 3px 6px;
+  background: #d8e7f4;
+  color: #164779;
+  font: bold 12px Tahoma, SimSun, sans-serif;
+}
+
+.documents-side p {
+  margin: 4px 0;
+}
+
+.my-documents-folder {
+  min-height: 100%;
+  background: #fff;
+  padding: 24px 28px 40px;
+}
+
+.folder-heading {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #d6d6d6;
+  margin-bottom: 20px;
+}
+
+.folder-heading h1 {
+  margin: 0;
+  color: #244b70;
+  font: normal 22px/1.4 SimSun, serif;
+}
+
+.folder-heading p {
+  margin: 4px 0 0;
+  color: #666;
+  font: 12px Tahoma, SimSun, sans-serif;
+}
+
+.document-file-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 20px 28px;
+}
+
+.document-file {
+  width: 112px;
+  min-height: 118px;
+  padding: 8px 5px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #222;
+  text-align: center;
+}
+
+.document-file:hover,
+.document-file:focus-visible {
+  border-color: #7aa5ce;
+  background: #eaf3fb;
+}
+
+.document-file-art {
+  display: block;
+  height: 54px;
+  margin-bottom: 5px;
+}
+
+.document-file-name {
+  display: block;
+  overflow-wrap: anywhere;
+  color: #164f9d;
+  font: 12px/1.35 Tahoma, SimSun, sans-serif;
+}
+
+.document-file small {
+  display: block;
+  margin-top: 3px;
+  color: #777;
+  font: 10px/1.2 Tahoma, SimSun, sans-serif;
+}
+
+.document-file-icon {
+  display: block;
+  position: relative;
+  width: 42px;
+  height: 46px;
+  margin: 0 auto;
+  border: 1px solid #667b8e;
+  background: #fff;
+  box-shadow: 1px 1px 0 #c6c6c6;
+}
+
+.document-file-icon::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 12px;
+  height: 12px;
+  border-left: 1px solid #667b8e;
+  border-bottom: 1px solid #667b8e;
+  background: #dceaf5;
+}
+
+.document-file-icon::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 19px;
+  height: 2px;
+  background: #5a8db8;
+  box-shadow: 0 7px #5a8db8, 0 14px #5a8db8;
+}
+
+.document-file-mail {
+  background: #fffef5;
+}
+
+.document-file-mail::before {
+  background: #f4e48c;
+}
+
+.document-file-mail::after {
+  left: 4px;
+  right: 4px;
+  top: 19px;
+  height: 10px;
+  background:
+    linear-gradient(35deg, transparent 47%, #477aa3 48% 52%, transparent 53%),
+    linear-gradient(-35deg, transparent 47%, #477aa3 48% 52%, transparent 53%);
+  box-shadow: none;
+}
+
+.document-file-folder {
+  width: 52px;
+  height: 38px;
+  margin-top: 8px;
+  border-color: #9a751e;
+  background: linear-gradient(#f6dc79 0 22%, #e6bf45 23%);
+}
+
+.document-file-folder::before {
+  top: -5px;
+  left: 5px;
+  right: auto;
+  width: 20px;
+  height: 7px;
+  border: 1px solid #9a751e;
+  background: #f3d26a;
+}
+
+.document-file-folder::after {
+  display: none;
+}
+
+.document-file-html {
+  background: #eaf3fb;
+}
+
+.document-file-text {
+  background: #fff;
+}
+
+.xp-password-dialog {
+  width: min(440px, 100%);
+  margin: 40px auto;
+  border: 1px solid #7e7e7e;
+  background: #f2f2f2;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, .2);
+}
+
+.xp-password-dialog h1 {
+  margin: 0;
+  padding: 9px 14px;
+  color: #fff;
+  background: linear-gradient(#5d86b4, #3d6490);
+  font: bold 14px Tahoma, SimSun, sans-serif;
+}
+
+.xp-password-dialog > p {
+  padding: 14px 18px 0;
+  margin: 0;
+  font: 13px/1.6 Tahoma, SimSun, sans-serif;
+}
+
+.xp-password-dialog form {
+  padding: 14px 18px 18px;
+}
+
+.xp-password-dialog .field {
+  margin-bottom: 7px;
+}
+
+.xp-password-dialog .login-actions {
+  margin-top: 13px;
+}
+
+/* The three harmless desktop icons use the same Explorer shell as Windows XP.
+   Their contents stay inert; only the shell and its neutral system feedback are live. */
+.system-explorer {
+  display: flex;
+  min-width: 700px;
+  height: 100%;
+  min-height: 0;
+  background: #fff;
+  font: 12px/1.35 Tahoma, SimSun, "宋体", sans-serif;
+}
+.system-explorer-main {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  flex-direction: column;
+  background: #fff;
+}
+.system-explorer-toolbar {
+  display: flex;
+  flex: 0 0 47px;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  border-bottom: 1px solid #888;
+  background: #c0c0c0;
+  box-shadow: inset 0 1px #fff;
+}
+.system-explorer-toolbar .explorer-tool {
+  display: inline-flex;
+  width: 45px;
+  height: 42px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid transparent;
+  color: #111;
+  font: 11px/15px Tahoma, SimSun, "宋体", sans-serif;
+}
+.system-explorer-toolbar .explorer-tool-wide { width: 52px; }
+.system-explorer-toolbar .explorer-tool-disabled { opacity: .48; }
+.system-explorer-toolbar .explorer-icon { display: block; width: 28px; height: 28px; background: center / contain no-repeat; }
+.system-explorer-toolbar .explorer-back { background-image: url('./assets/xp-original/back.png'); }
+.system-explorer-toolbar .explorer-forward { background-image: url('./assets/xp-original/forward.png'); }
+.system-explorer-toolbar .explorer-up { background-image: url('./assets/xp-original/home.png'); }
+.system-explorer-toolbar .explorer-search { background-image: url('./assets/xp-original/search.png'); }
+.system-explorer-toolbar .explorer-folders { background-image: url('./assets/xp-original/favorite.png'); }
+.system-explorer-toolbar .explorer-views { background-image: url('./assets/xp-original/history.png'); }
+.system-explorer-toolbar .explorer-separator { width: 2px; height: 31px; margin: 0 3px; border-left: 1px solid #888; border-right: 1px solid #fff; }
+.system-explorer-address {
+  display: flex;
+  flex: 0 0 27px;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 6px;
+  border-bottom: 1px solid #888;
+  background: #d4d0c8;
+  color: #111;
+  font: 12px/21px Tahoma, SimSun, "宋体", sans-serif;
+}
+.system-explorer-address-field {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  height: 21px;
+  padding: 0 3px;
+  border: 1px solid #7f9db9;
+  background: #fff;
+  box-shadow: inset 1px 1px #ddd;
+}
+.system-explorer-address-field span { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.system-explorer-address-field b { padding: 0 3px; color: #244c80; font: 10px Arial, sans-serif; }
+.system-explorer-address > button { min-width: 48px; height: 23px; border: 1px solid #7f9db9; background: linear-gradient(#fff, #d8e4ed); color: #111; font: 12px Tahoma, SimSun, sans-serif; }
+.system-explorer-layout { display: grid; min-height: 0; flex: 1; grid-template-columns: 198px minmax(0, 1fr); }
+.system-explorer-sidebar { overflow: auto; padding: 10px 8px; border-right: 1px solid #90a9c4; background: linear-gradient(#eaf2fb, #d6e4f4 72%, #6e8ed2); color: #13477f; }
+.system-explorer-sidebar section { margin-bottom: 14px; border: 1px solid #c1d2ea; background: #edf4fd; box-shadow: inset 0 1px rgba(255,255,255,.85); }
+.system-explorer-sidebar h3 { margin: 0; padding: 6px 9px; color: #07539a; background: linear-gradient(#dcecfb, #c4daf3); font: bold 13px Tahoma, SimSun, sans-serif; }
+.system-explorer-sidebar button { display: block; width: 100%; padding: 5px 9px 5px 22px; border: 0; background: transparent; color: #154f8c; font: 12px/1.25 Tahoma, SimSun, sans-serif; text-align: left; }
+.system-explorer-sidebar button:hover { background: #d2e3f7; text-decoration: underline; }
+.system-explorer-sidebar strong, .system-explorer-sidebar span { display: block; padding: 0 9px; color: #1e2d3b; font: 12px/1.45 Tahoma, SimSun, sans-serif; }
+.system-explorer-sidebar strong { padding-top: 8px; font-weight: bold; }
+.system-explorer-sidebar span { padding-bottom: 9px; color: #536676; }
+.system-explorer-content { min-width: 0; overflow: auto; background: #fff; color: #111; }
+.system-explorer-group-title { padding: 8px 18px 5px; border-bottom: 1px solid #d2d2d2; color: #111; font: bold 15px SimSun, "宋体", serif; }
+.system-drive-grid { display: flex; gap: 24px; align-items: flex-start; padding: 24px 18px; }
+.system-drive { width: 126px; min-height: 105px; padding: 7px 4px; align-items: center; gap: 5px; color: #111; font: 12px/1.25 Tahoma, SimSun, "宋体", sans-serif; }
+.system-drive:hover, .system-drive:focus-visible { border: 1px dotted #245a9a; background: #e8f1fa; outline: 0; }
+.system-empty-view { display: grid; min-height: 100%; place-items: center; color: #777; background: #e5e5e5; font: 13px/1.5 Tahoma, SimSun, "宋体", sans-serif; }
+.system-dialog-message { display: flex; gap: 12px; align-items: flex-start; padding: 18px 17px 4px; background: #ece9d8; color: #111; }
+.system-dialog-message > i { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; border: 1px solid #7191b3; border-radius: 50%; background: #fff; color: #2d5e9b; font: bold 18px/1 Arial, sans-serif; font-style: normal; }
+.system-dialog-message p { margin: 2px 0 0; padding: 0; background: transparent; border: 0; font: 13px/1.45 Tahoma, SimSun, "宋体", sans-serif; }
+.system-dialog-actions { padding: 8px 17px 15px; background: #ece9d8; text-align: right; }
+.system-dialog-actions .system-button { min-width: 72px; min-height: 24px; padding: 2px 12px; }
+
+@media (max-width: 900px) {
+  .documents-side {
+    display: none;
+  }
+
+  .my-documents-folder {
+    padding: 18px;
+  }
+
+  .system-explorer {
+    min-width: 700px;
+  }
+}

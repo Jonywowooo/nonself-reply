@@ -1,0 +1,22 @@
+/* Existing publication palettes and XP chrome remain the visual baseline. */
+.site-page .report-photo img { max-height:none; object-fit:contain; }
+.site-page .byline,.site-page .archive-photo figcaption { font-size:13px; color:#505050; line-height:1.7; }
+.archive-image-open { display:block; padding:0; border:0; background:transparent; width:100%; text-align:left; cursor:zoom-in; }
+.archive-image-open:focus-visible { outline:2px solid #1759a4; outline-offset:3px; }
+.archive-image-hint { display:block; font:12px/1.7 SimSun,serif; color:#31567a; padding:4px; text-decoration:underline; }
+.archive-image-dialog { padding:0; border:3px solid #135acb; background:#ece9d8; width:min(1200px,94vw); max-width:94vw; max-height:92vh; color:#111; }
+.archive-image-dialog::backdrop { background:rgba(0,0,0,.65); }
+.archive-image-bar { display:flex; align-items:center; gap:8px; padding:6px; background:#1463d8; color:white; font:14px SimSun,serif; }
+.archive-image-bar span { margin-right:auto; }.archive-image-bar button { font:13px SimSun,serif; padding:4px 10px; }
+.archive-image-pane { max-height:72vh; overflow:auto; background:#333; text-align:center; }
+.archive-image-pane img { display:block; margin:auto; max-width:100%; max-height:72vh; width:auto; height:auto; object-fit:contain; }
+.archive-image-pane.natural-size img { max-width:none; max-height:none; margin:0; }
+.archive-image-dialog p { margin:0; padding:10px; font:13px/1.6 SimSun,serif; }
+/* Include the portrait padding inside its height, including short final replies. */
+.forum-thread-page .forum-body::after,.forum-thread-page .forum-reply::after { box-sizing:border-box; }
+.reading-portrait { margin: 24px auto; max-width: 440px; text-align: center; }
+.reading-portrait img { display: block; width: 100%; height: auto; }
+.reading-portrait figcaption { padding: 9px; color: #444; font-size: 15px; }
+.sequential-reader .source-signature { font-weight: 600; margin-top: 1.5em; }
+.sequential-reader .source-transcript { font-size: 16px; line-height: 1.9; }
+.sequential-reader .source-transcript p { font-size: inherit; line-height: inherit; }

@@ -1,0 +1,98 @@
+/* Independent XP windows. Geometry comes from xp-workspace.js. */
+.computer.xp-workspace { min-width:800px; isolation:isolate; }
+.xp-workspace .window[data-window-app] { box-sizing:border-box; container-type:inline-size; min-width:0; min-height:0; overflow:visible; }
+.xp-workspace .window[data-window-app][hidden] { display:none; }
+.xp-workspace .window.window-restored { border-radius:8px 8px 0 0; box-shadow:2px 3px 6px #0004; }
+.xp-workspace .window.window-restored>.window-titlebar { border-radius:7px 7px 0 0; }
+.xp-workspace .window.window-inactive>.window-titlebar,
+.computer.xp-workspace .window[aria-label="Outlook Express"].window-inactive>.window-titlebar { background:linear-gradient(#b9d0f4,#8eafe3 15%,#7b9fd8 75%,#6588ba); color:#f7f8fc; }
+.xp-workspace .window-inactive>.window-titlebar .window-controls button { opacity:.72; }
+.xp-workspace .taskbar { z-index:10000; }
+.xp-workspace .start-menu { z-index:11000; }
+.xp-workspace .ui-modal-backdrop { z-index:12000; }
+.xp-workspace .save-warning { z-index:12500; }
+.xp-window-manipulating,.xp-window-manipulating * { user-select:none!important; }
+.xp-workspace .window-titlebar { touch-action:none; }
+.xp-resize-handle { position:absolute; display:block; z-index:30; touch-action:none; }
+.window-maximized>.xp-resize-handle { display:none; }
+.xp-resize-n { top:0; left:7px; right:7px; height:4px; cursor:n-resize; }
+.xp-resize-s { bottom:-3px; left:7px; right:7px; height:6px; cursor:s-resize; }
+.xp-resize-e { top:7px; right:-3px; bottom:7px; width:6px; cursor:e-resize; }
+.xp-resize-w { top:7px; left:-3px; bottom:7px; width:6px; cursor:w-resize; }
+.xp-resize-ne { top:0; right:-3px; width:8px; height:8px; cursor:ne-resize; }
+.xp-resize-nw { top:0; left:-3px; width:8px; height:8px; cursor:nw-resize; }
+.xp-resize-se { bottom:-3px; right:-3px; width:10px; height:10px; cursor:se-resize; }
+.xp-resize-sw { bottom:-3px; left:-3px; width:8px; height:8px; cursor:sw-resize; }
+.xp-taskbar-menu { position:absolute; z-index:11001; min-width:185px; padding:3px; color:#000; background:#fff; border:1px solid #777; box-shadow:2px 2px 3px #0005; font:12px Tahoma,SimSun,sans-serif; }
+.xp-taskbar-menu button { display:block; width:100%; min-height:24px; padding:3px 10px; border:0; border-radius:0; background:transparent; color:#000; text-align:left; font:inherit; }
+.xp-taskbar-menu button:hover:not(:disabled),.xp-taskbar-menu button:focus-visible { outline:0; background:#316ac5; color:#fff; }
+.xp-taskbar-menu button:disabled { color:#999; }
+.xp-taskbar-menu hr { height:0; border:0; border-top:1px solid #ccc; margin:3px 2px; }
+
+/* OE folds prose to its real window width; wide message lists retain horizontal scrolling. */
+.computer.xp-workspace .window[data-window-app] .oe-client,
+.computer.xp-workspace .window[data-window-app] .oe-client>.mail-layout,
+.computer.xp-workspace .window[data-window-app] .oe-folder-caption { min-width:0; }
+.xp-workspace .window[data-window-app] .oe-toolbar-row { overflow-x:auto; overflow-y:hidden; height:52px; flex-shrink:0; }
+.xp-workspace .window[data-window-app] .oe-toolbar-row>.oe-tool { flex-shrink:0; }
+.xp-workspace .window[data-window-app] .mail-search-row .search-box { min-width:0; flex:1; width:auto; }
+.xp-workspace .window[data-window-app] .mail-search-row .search-box input { width:0; min-width:40px; flex:1; }
+.xp-workspace .window[data-window-app] .mail-search-label { flex:none; }
+.xp-workspace .window[data-window-app] .mail-search-history { max-width:calc(100% - 12px); left:6px; }
+.xp-workspace .window[data-window-app] .oe-message-list .mail-list { min-width:580px; }
+.xp-workspace .window[data-window-app] .oe-message-body,
+.xp-workspace .window[data-window-app] .oe-message-header { overflow-wrap:anywhere; }
+.xp-workspace .window[data-window-app] .mail-content { min-width:0; }
+.xp-workspace .window[data-window-app] .message-view:not(.oe-preview) { width:100%; box-sizing:border-box; overflow-wrap:anywhere; }
+
+/* IE chrome stays usable when restored. Period web pages retain their original fixed layout and horizontal scroll bar. */
+.computer.xp-workspace .window[data-window-app] .browser-layout { min-width:0; }
+.xp-workspace .window[data-window-app] .browser-chrome { min-width:0; }
+.xp-workspace .window[data-window-app] .ie-toolbar { min-width:0; overflow-x:auto; overflow-y:hidden; }
+.xp-workspace .window[data-window-app] .browser-address-form { min-width:0; }
+.xp-workspace .window[data-window-app] .local-document .document-paper { min-width:0; width:100%; box-sizing:border-box; overflow-wrap:anywhere; }
+.xp-workspace .window[data-window-app] .local-document .browser-toolbar { overflow-x:auto; overflow-y:hidden; }
+.xp-workspace .window[data-window-app] .documents { min-width:0; }
+.xp-workspace .window[data-window-app] .documents-toolbar { white-space:nowrap; overflow-x:auto; }
+.xp-workspace .window[data-window-app] .documents .document-paper { padding:16px; }
+@container (max-width:650px) {
+  .xp-workspace .window[data-window-app] .oe-toolbar-row { height:66px; }
+  .xp-workspace .window[data-window-app] .ie-toolbar { height:55px; }
+  .xp-workspace .window[data-window-app] .browser-history-menu { left:auto; right:8px; max-width:calc(100% - 16px); }
+  .xp-workspace .window[data-window-app] .search-results { padding-left:18px; padding-right:18px; }
+  .xp-workspace .window[data-window-app] .search-results-form { display:grid; grid-template-columns:minmax(0,1fr); gap:12px; width:100%; min-width:0; }
+  .xp-workspace .window[data-window-app] .search-results-form .search-brand { justify-content:flex-start; }
+  .xp-workspace .window[data-window-app] .search-results-form .search-categories { justify-content:flex-start; flex-wrap:wrap; gap:14px; margin:0; font-size:14px; }
+  .xp-workspace .window[data-window-app] .search-results-form>div:last-child { min-width:0; gap:4px; }
+  .xp-workspace .window[data-window-app] .search-results-form input { flex:1; min-width:0; width:0; }
+  .xp-workspace .window[data-window-app] .search-results-form button { flex:none; min-width:75px; }
+  .xp-workspace .window[data-window-app] .search-landing { padding-left:18px; padding-right:18px; }
+  .xp-workspace .window[data-window-app] .search-landing .search-categories { flex-wrap:wrap; gap:14px; font-size:14px; }
+  .xp-workspace .window[data-window-app] .search-landing form { width:100%; min-width:0; }
+  .xp-workspace .window[data-window-app] .search-landing form input { min-width:0; width:0; }
+  .xp-workspace .window[data-window-app] .search-landing form button { flex:none; }
+  .xp-workspace .window[data-window-app] .oe-client>.mail-layout,
+  .xp-workspace .window[data-window-app] .oe-client>.oe-folder-caption+.mail-layout { grid-template-columns:135px minmax(0,1fr); }
+  .xp-workspace .window[data-window-app] .oe-folder-root { font-size:11px; }
+  .xp-workspace .window[data-window-app] .folder-button { padding-left:24px; font-size:11px; }
+  .xp-workspace .window[data-window-app] .documents { grid-template-columns:145px minmax(0,1fr); }
+  .xp-workspace .window[data-window-app] .documents-side { padding:7px; }
+  .xp-workspace .window[data-window-app] .local-document .document-paper { padding:14px 16px 28px; }
+  .xp-workspace .window[data-window-app] .continuity-actions { flex-wrap:wrap; }
+}
+@container (max-width:450px) {
+  .xp-workspace .window[data-window-app] .search-landing .search-brand { gap:5px; }
+  .xp-workspace .window[data-window-app] .search-landing .search-brand>b { font-size:32px; }
+  .xp-workspace .window[data-window-app] .search-landing .search-brand>strong { font-size:30px; }
+  .xp-workspace .window[data-window-app] .search-landing .search-brand>small { display:none; }
+  .xp-workspace .window[data-window-app] .oe-client>.mail-layout,
+  .xp-workspace .window[data-window-app] .oe-client>.oe-folder-caption+.mail-layout { grid-template-columns:112px minmax(0,1fr); }
+  .xp-workspace .window[data-window-app] .oe-folder-root { height:auto; line-height:16px; }
+  .xp-workspace .window[data-window-app] .mail-sidebar .folder-button { white-space:normal; height:auto; min-height:22px; }
+  .xp-workspace .window[data-window-app] .oe-message-body { padding:10px; }
+  .xp-workspace .window[data-window-app] .oe-message-header b { min-width:58px; }
+  .xp-workspace .window[data-window-app] .documents { grid-template-columns:115px minmax(0,1fr); }
+  .xp-workspace .window[data-window-app] .documents-side section { overflow-wrap:anywhere; }
+  .xp-workspace .window[data-window-app] .reading-nav { gap:5px; flex-wrap:wrap; }
+  .xp-workspace .window[data-window-app] .reading-nav .system-button { min-width:70px; }
+}

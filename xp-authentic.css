@@ -1,0 +1,198 @@
+/* XP Luna / Simplified Chinese, 96 CSS px per inch.
+   Reference images and intentional game adaptations: design document 71.
+   Final presentation layer; story data and unlock rules remain independent. */
+:root{--xp-face:#ece9d8;--xp-edge:#aca899;--xp-select:#316ac5;--ink:#000;--link:#0000ee;font-family:Tahoma,SimSun,"宋体",sans-serif;font-size:12px}
+.computer{color:#000}
+.computer button,.computer input,.computer textarea,.computer select{font-family:Tahoma,SimSun,"宋体",sans-serif}
+.computer button{cursor:default}
+.computer a,.computer .plain-link{cursor:pointer}
+.computer button:focus-visible,.computer a:focus-visible{outline:1px dotted #000;outline-offset:-4px}
+.computer input:focus-visible,.computer textarea:focus-visible{outline:1px solid #316ac5;outline-offset:0}
+.system-button,.system-button.primary,.search-box button,.archive-password button,.search-home button,.search-results button{min-height:23px;min-width:75px;padding:3px 12px;border:1px solid #003c74;border-radius:3px;color:#000;background:linear-gradient(#fff 0%,#f5f4ea 65%,#e6e3d5 100%);box-shadow:inset 1px 1px #fff;font:12px/16px Tahoma,SimSun,sans-serif}
+.system-button:hover:not(:disabled){filter:none;box-shadow:inset 0 0 0 2px #f5ca75}
+.system-button:active:not(:disabled){background:#e3e0d0;box-shadow:inset 1px 1px #b7b3a4}
+.system-button:disabled{border-color:#c9c7ba;background:#f5f4ea;color:#a1a192;box-shadow:none}
+.computer input,.computer textarea{border-radius:0;box-shadow:none;color:#000;background:white}
+.desktop-icons{display:grid;grid-auto-flow:column;grid-template-rows:repeat(6,75px);grid-template-columns:75px;gap:0;width:83px;padding:4px}
+.desktop-icon,.desktop-static{width:75px;min-height:0;height:75px;padding:4px 1px;margin:0;font:12px/14px Tahoma,SimSun,sans-serif}
+.desktop-icon:hover{border-color:transparent;background:none}
+.desktop-icon:focus-visible{outline:0;background:none;border-color:transparent}
+.desktop-icon:focus-visible>span{background:#316ac5;outline:1px dotted #fff}
+.desktop-icons .xp-icon{width:32px;height:32px;margin:0 auto 5px}
+.window{inset:0 0 30px;border:3px solid #0054e3;border-top:0;border-radius:0;box-shadow:none}
+.window-restored{inset:32px 5vw 65px;border-radius:8px 8px 0 0}
+.window-titlebar{height:30px;min-height:30px;padding:0 3px;border-radius:0;font:bold 13px/16px Tahoma,SimSun,sans-serif;gap:5px}
+.window-restored .window-titlebar{border-radius:7px 7px 0 0}
+.window-controls{gap:2px}
+.window-controls button{width:21px;height:21px;min-height:21px;padding:0;font:bold 17px/17px Arial,sans-serif}
+.window-titlebar .tiny-icon{background:transparent url('./assets/xp-original/shell-235.ico') center/16px no-repeat}
+.window:has(.browser-layout) .tiny-icon{background-image:url('./assets/xp-original/ie-paper.png')}
+.window:has(.oe-client) .tiny-icon{background-image:url('./assets/xp-original/mail.png')}
+.menu-bar{height:23px;min-height:23px;gap:0;align-items:center;padding:1px 4px;font:12px/18px Tahoma,SimSun,sans-serif;background:var(--xp-face);border-bottom:1px solid #fff}
+.menu-bar>span{padding:0 7px}
+.menu-bar>span:hover{background:#c1d2ee;outline:1px solid #316ac5}
+.taskbar{height:30px;gap:0}.start-button{min-width:93px;padding:0 9px 0 4px;font:bold italic 18px Tahoma,SimSun,sans-serif}
+.task-items{gap:3px;padding:0 4px;min-width:0}.task-item{min-width:0;width:160px;max-width:160px;height:25px;font:12px Tahoma,SimSun,sans-serif;overflow:hidden}.task-item span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.task-item.active{font-weight:bold}
+.quick-launch{padding:0 7px;gap:5px;border-right:1px solid #1c4eb6;box-shadow:1px 0 #518ae8}.quick-launch .xp-icon{width:16px;height:16px}
+.tray{padding:0 12px;gap:9px;height:30px;font:12px Tahoma,SimSun,sans-serif}.start-menu{bottom:30px}
+/* Native-size controls, original icon assets, visible keyboard focus. */
+.ie-toolbar{height:39px;padding:2px 5px;gap:0;background:var(--xp-face)}
+.ie-toolbar .browser-nav,.ie-toolbar .browser-history-button,.ie-static-tool{height:33px;min-width:30px;padding:2px 5px;border-radius:0;font:12px Tahoma,SimSun,sans-serif}
+.ie-icon,.ie-back,.ie-forward,.ie-stop,.ie-refresh,.ie-home,.ie-history,.ie-magnify,.ie-star{width:24px;height:24px;background-size:24px 24px}
+.ie-separator{height:28px;margin:0 4px}.ie-toolbar .disabled{opacity:.45}
+.browser-address-form{height:25px;padding:1px 5px}.browser-address-form label{flex-basis:43px;font-size:12px}
+.ie-address-field{height:22px}.browser-address-form .browser-address{height:20px;min-height:20px;font:12px Tahoma,SimSun,sans-serif;padding:1px 2px}
+.browser-address-form .ie-go{height:23px}.ie-go i{width:20px;height:20px}.browser-history-menu{top:39px;left:365px}
+.window:has(.browser-layout)::after{content:'完成';flex:0 0 21px;height:21px;padding:2px 6px;border-top:1px solid #aca899;background:var(--xp-face);font:12px/16px Tahoma,SimSun,sans-serif}
+.window:has(.local-document)::after{content:'完成　　我的电脑'}
+.computer .window-body{scrollbar-color:auto}
+.computer ::-webkit-scrollbar{width:17px;height:17px}
+.computer ::-webkit-scrollbar-track{background:#f1efe2;border:1px solid #fff}
+.computer ::-webkit-scrollbar-thumb{border:1px solid #91a6cc;border-radius:2px;background:linear-gradient(90deg,#eef3ff,#c6d5f3);box-shadow:inset 1px 1px #fff}
+.computer ::-webkit-scrollbar-button:single-button{height:17px;width:17px;background:#d4dff7;border:1px solid #91a6cc}
+/* OE: split message list / preview; the attachment row belongs to the header. */
+.window:has(.oe-client) .window-body{overflow:hidden}
+.oe-client{display:flex;flex-direction:column;height:100%;min-height:0;min-width:700px;background:var(--xp-face)}
+.oe-client>.mail-toolbar{display:block;flex:0 0 auto;min-width:0;padding:0;background:var(--xp-face);border:0}
+.oe-toolbar-row{display:flex;align-items:center;width:auto;min-width:0;height:52px;padding:1px 4px;background:var(--xp-face);border-bottom:1px solid #aca899;box-shadow:inset 0 1px white}
+.oe-toolbar-row>.oe-tool{position:static;flex:0 0 66px;width:66px;min-width:0;height:47px;display:flex;flex-direction:column;justify-content:center;gap:1px;padding:1px;border:1px solid transparent;color:#000;font:12px/15px SimSun,sans-serif;background:transparent!important}
+.oe-toolbar-row>.oe-tool:first-child{flex-basis:80px}
+.oe-toolbar-row>.oe-tool>span{display:block;width:auto;font:12px/15px SimSun,sans-serif;color:#000;white-space:nowrap}
+.oe-toolbar-row>.oe-tool>.oe-tool-icon{display:block!important;width:32px!important;height:27px;background-size:auto!important;opacity:1;filter:brightness(1.12) sepia(.08);background-repeat:no-repeat!important}
+.oe-toolbar-row>.oe-tool-static{opacity:.55}
+.oe-toolbar-row>.oe-tool-static>span{color:#666}
+.oe-toolbar-row>button.oe-tool:hover,.oe-toolbar-row>button.oe-tool:focus-visible{border:1px solid #7f9db9;outline:1px dotted #333;outline-offset:-3px;box-shadow:inset 1px 1px #fff!important}
+.oe-toolbar-row>.oe-toolbar-separator{display:block;height:39px;width:2px;margin:0 4px;border-left:1px solid #aca899;border-right:1px solid white}
+.oe-toolbar-row>.oe-tool>.oe-icon-compose{background:url('./assets/oe-cells/compose.png') -25px -1px!important}
+.oe-toolbar-row>.oe-tool>.oe-icon-reply{background:url('./assets/oe-cells/reply.png') -13px -1px!important}
+.oe-toolbar-row>.oe-tool>.oe-icon-replyall{background:url('./assets/oe-cells/replyall.png') -17px -1px!important}
+.oe-toolbar-row>.oe-tool>.oe-icon-forward{background:url('./assets/oe-cells/forward.png') -10px -1px!important}
+.oe-toolbar-row>.oe-tool>.oe-icon-print{background:url('./assets/oe-cells/print.png') -16px -1px!important}
+.oe-toolbar-row>.oe-tool>.oe-icon-delete{background:url('./assets/oe-cells/delete.png') -13px -1px!important}
+.oe-toolbar-row>.oe-tool>.oe-icon-sendrecv{background:url('./assets/oe-cells/sendrecv.png') -14px -1px!important}
+.oe-toolbar-row>.oe-tool>.oe-icon-address{background:url('./assets/oe-cells/address.png') -20px -1px!important}
+.oe-toolbar-row>.oe-tool>.oe-icon-find{background:url('./assets/oe-cells/find.png') -20px -1px!important}
+.mail-search-row{display:flex;align-items:center;min-height:28px;padding:2px 5px;background:var(--xp-face)}
+.mail-search-label{font:12px SimSun,sans-serif}.mail-search-row .search-box{width:min(530px,calc(100% - 80px));margin:0;gap:3px}
+.mail-search-row .search-box input{height:23px;min-height:23px;padding:2px 4px;font:12px Tahoma,SimSun,sans-serif;border:1px solid #7f9db9}
+.mail-search-row .search-box button{min-width:48px;min-height:23px;padding:1px 6px;border-left:1px solid #003c74;font-size:12px}
+.mail-search-row .search-history-toggle{min-width:21px!important;padding:0!important}
+.mail-search-help{margin:0;padding:2px 8px 5px;color:#555;font:12px/16px SimSun,sans-serif}
+.mail-search-history{top:80px;left:70px;right:auto;width:400px}
+.oe-folder-caption{height:25px;min-height:25px;padding:2px 6px;background:#a5a291;color:#fff;font:bold 16px/20px Tahoma,SimSun,sans-serif;border-top:1px solid #fff;border-bottom:1px solid #fff}
+.oe-client>.mail-layout{display:grid;grid-template-columns:196px minmax(0,1fr);flex:1;height:auto;min-height:0}
+.mail-sidebar{background:#fff;padding:0;border-right:3px ridge #ece9d8;font:12px Tahoma,SimSun,sans-serif;overflow:auto}
+.mail-sidebar h2{height:22px;margin:0;padding:3px 5px;font:12px/16px SimSun,sans-serif;background:var(--xp-face);border-bottom:1px solid #aca899}
+.oe-folder-root,.oe-folder-group{height:22px;padding:3px 5px;font:12px/16px Tahoma,SimSun,sans-serif}.oe-folder-group{padding-left:14px}
+.folder-button{height:22px;padding:2px 8px 2px 27px;font:12px/17px SimSun,sans-serif}
+.folder-button.active{background:#316ac5}.folder-button:hover:not(.active){background:#e8edf7;color:#000}
+.oe-folder-footer{margin-top:24px;padding:8px;border-top:1px solid #aca899;color:#666;font-size:12px}
+.mail-content{display:flex;flex-direction:column;min-height:0;overflow:auto;background:#fff}
+.oe-statusbar{display:flex;flex:0 0 21px;min-height:21px;padding:1px 3px;background:var(--xp-face);border-top:1px solid #aca899;font:12px/17px Tahoma,SimSun,sans-serif}
+.oe-statusbar span{padding:0 6px;border-right:1px solid #aca899}.oe-statusbar span:first-child{flex:1}
+.mail-list{font:12px/17px Tahoma,SimSun,sans-serif;border-collapse:collapse;color:#000}
+.mail-list th{height:21px;padding:2px 5px;background:var(--xp-face);border-right:1px solid #aca899;border-bottom:1px solid #aca899;box-shadow:inset 1px 1px white;font:12px/16px SimSun,sans-serif;color:#000}
+.mail-list td{height:22px;padding:2px 5px;border-bottom:0;font:12px/18px Tahoma,SimSun,sans-serif}
+.mail-list tr.selected,.mail-list tr.selected:hover{background:#316ac5;color:white}.mail-list tr.selected button{color:white}
+.mail-list .attachment-marker{width:24px;text-align:center}.oe-message-list th:nth-child(2){width:150px}.oe-message-list th:last-child{width:155px}
+.oe-conversation{display:flex;flex-direction:column;min-height:0;height:100%;flex:1}
+.oe-message-list{flex:0 0 172px;overflow:auto;border-bottom:4px ridge #ece9d8}
+.oe-preview.message-view{flex:1;min-height:0;max-width:none;width:100%;padding:0;overflow:auto}
+.oe-message-header{position:sticky;top:0;z-index:2;padding:5px 8px;background:var(--xp-face);border-bottom:1px solid #aca899;font:12px/18px Tahoma,SimSun,sans-serif}
+.oe-message-header b{display:inline-block;min-width:70px;font-weight:normal}
+.oe-message-body{max-width:900px;padding:12px 14px 30px;font:14px/1.65 SimSun,serif;white-space:pre-line}
+.oe-message-body p{margin:0 0 16px}
+.oe-attachments{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:4px;padding-top:4px;border-top:1px solid #d4d0c8}
+.oe-attachments>span{width:66px}.oe-attachment{display:inline-flex;align-items:center;gap:5px;min-height:25px;padding:2px 7px;color:#000;font:12px Tahoma,SimSun,sans-serif;border:1px solid #aca899;background:#fff}
+.oe-attachment:hover{background:#d9e8fb}.attachment-file-icon{display:inline-block;width:16px;height:16px;background:url('./assets/xp-original/ie-paper.png') center/16px no-repeat}
+.message-view:not(.oe-preview){max-width:800px;padding:16px 20px 32px;font:14px/1.65 SimSun,serif}
+.message-view h1{font:bold 20px/1.4 SimSun,serif;color:#000}
+/* Explorer toolbars span the window above the task pane, as in XP. */
+.documents{position:relative;display:grid;grid-template-columns:210px minmax(0,1fr);height:100%;padding-top:65px;min-width:700px}
+.documents-main{min-width:0;min-height:0}.documents-toolbar{position:absolute;top:0;left:0;right:0;height:39px;min-height:39px;background:var(--xp-face)}
+.documents-address{position:absolute;top:39px;left:0;right:0;height:26px;background:var(--xp-face)}
+.documents-toolbar .explorer-tool,.system-explorer-toolbar .explorer-tool{display:inline-flex;flex-direction:row;gap:5px;width:auto;min-width:35px;height:33px;padding:2px 6px;align-items:center;font:12px Tahoma,SimSun,sans-serif}
+.documents-toolbar .explorer-icon,.system-explorer-toolbar .explorer-icon{width:24px;height:24px;background-size:24px}
+.explorer-up,.system-explorer-toolbar .explorer-up{background-image:url('./assets/xp-original/up.png')}
+.explorer-folders,.system-explorer-toolbar .explorer-folders{background-image:url('./assets/xp-original/folder.png')}
+.explorer-views,.system-explorer-toolbar .explorer-views{background-image:url('./assets/xp-original/view-info.ico')}
+.system-explorer-toolbar{height:39px;flex-basis:39px;background:var(--xp-face)}.system-explorer-address{background:var(--xp-face)}
+.documents-side,.system-explorer-sidebar{display:block!important;padding:12px;background:linear-gradient(#7ba2e7,#6375d6);border:0;color:#215dc6}
+.documents-side section,.system-explorer-sidebar section{margin:0 0 14px;padding:0 0 9px;background:#d6dff7;border:1px solid #fff;border-radius:3px 3px 0 0}
+.documents-side h2,.system-explorer-sidebar h3{margin:0 0 8px;padding:6px 10px;font:bold 12px/17px Tahoma,SimSun,sans-serif;background:linear-gradient(90deg,#fff,#c6d3f7);color:#215dc6}
+.documents-side h2::after{content:'⌃';float:right;border-radius:50%;background:white;width:16px;height:16px;text-align:center;box-shadow:1px 1px 2px #aaa}
+.documents-side p{padding:0 10px;font:12px/18px SimSun,sans-serif;margin:2px 0}
+.my-documents-folder{padding:12px}.folder-heading{display:none}.document-file-grid{gap:12px}
+.document-file{width:104px;min-height:88px;padding:4px}.document-file-art{height:36px;margin:2px 0 4px}.document-file small{font-size:11px}.document-file-name{color:#000}
+.document-file-icon{width:32px;height:32px;margin:0 auto;border:0;background:url('./assets/xp-original/ie-paper.png') center/32px no-repeat;box-shadow:none}
+.document-file-icon::before,.document-file-icon::after{display:none}
+/* Local HTML keeps a restrained, period web page inside IE. */
+.local-document{min-height:100%;background:#fff}.local-document .document-paper{overflow:visible;padding:18px 26px 35px;max-width:812px;margin:0 auto;font:14px/1.75 SimSun,serif}
+.local-document h1{margin:22px 0 16px;color:#000;font:bold 22px/1.4 SimSun,serif}.local-document h2{color:#000;font:bold 16px/1.5 SimSun,serif}
+.local-document p{font:14px/1.75 SimSun,serif}.local-document .faint{font:12px/1.6 SimSun,serif;color:#666}
+.reading-nav{padding:8px 0;min-height:41px;gap:12px;border-bottom:1px solid #aaa}.reading-nav span{font:12px Tahoma,SimSun,sans-serif;color:#555}
+.reading-nav .system-button{min-width:90px}.reading-original{padding:4px 0 16px}.reading-index{margin:10px 0;font:12px SimSun,serif}
+.reading-index summary{cursor:pointer;text-decoration:underline;color:#0000ee}.reading-index button{margin:9px 0}
+.continuity-names{padding:12px 0;border-top:1px solid #aaa}.continuity-names .field{font:13px SimSun,serif;gap:4px;margin:12px 0}
+.document-paper textarea{width:100%;max-width:none;margin:4px 0;padding:5px;font:14px/1.6 SimSun,serif;border:1px solid #7f9db9}
+.continuity-names .faint{margin:4px 0}.name-feedback{padding:8px 0;min-height:24px;color:#222;font:13px/1.5 SimSun,serif!important}
+.draft-status{display:block;margin:3px 0 8px;color:#666;font:12px SimSun,serif}.continuity-actions{padding:12px 0;border-top:1px solid #aaa;display:flex;gap:12px}.continuity-names button{margin:0;min-height:25px}
+.archive-password{width:370px;max-width:100%;margin:25px 0;padding:12px 14px;border:3px solid #0054e3;border-top:0;border-radius:7px 7px 0 0;background:var(--xp-face);font:12px Tahoma,SimSun,sans-serif}
+.archive-password h2{margin:0 -14px 15px;padding:6px 6px;background:linear-gradient(#7baafa,#0756df 20%,#004ccc);color:white;font:bold 13px/18px Tahoma,SimSun,sans-serif}
+.archive-password p,.archive-password .field{font:12px/1.5 Tahoma,SimSun,sans-serif}.archive-password input{min-height:23px;height:23px;padding:2px 4px;border:1px solid #7f9db9}.archive-password button{display:block;margin-left:auto}.archive-password .form-error{color:#a00000}
+/* Period pages: 960px fixed-width portals, compact sidebars and blue links. */
+.site-utility,.site-network-header,.site-breadcrumb,.site-page-grid,.site-footer{width:960px;max-width:calc(100% - 20px);margin-left:auto;margin-right:auto}
+.site-utility{padding:3px 0;font:12px/18px SimSun,serif}.site-brand-row{min-height:66px;padding:8px 4px}.site-network-brand b{font:bold 26px SimSun,serif;letter-spacing:0}.site-network-brand span{font:10px Arial,sans-serif;letter-spacing:1px}
+.site-network-header nav{min-height:27px}.site-network-header nav a{padding:6px 20px;font:12px/16px SimSun,serif}.site-network-header nav a.active::after{display:none}
+.site-network-meta{padding:4px 7px;font:12px/18px SimSun,serif}.site-breadcrumb{padding:8px 2px;font:12px/18px SimSun,serif}
+.site-page-grid{grid-template-columns:136px minmax(0,1fr) 156px;gap:8px;min-height:0}.site-page-heading{padding:5px 8px;font:12px/18px SimSun,serif}.site-page-heading small{display:none}
+.site-page-grid>.site-main-column>.old-page{padding:14px 18px 30px}.site-page .old-page h1{margin:16px 0 12px;text-align:center;font:bold 22px/1.5 SimSun,serif}.site-page .old-page .byline{font:12px/1.6 SimSun,serif;text-align:center;padding-bottom:12px;border-bottom:1px solid #ddd}
+.site-page .old-page p,.site-page .old-page li{font:14px/1.75 SimSun,serif}.site-page a{color:#0000ee}.site-masthead{font:12px SimSun,serif;color:#777}
+.rail-module h2,.right-module h2{padding:5px 7px;font:bold 12px/18px SimSun,serif}.rail-module>a,.right-module>a{padding:5px 7px;font:12px/1.5 SimSun,serif}.site-faux-link{color:#777!important;text-decoration:none!important;cursor:default}
+.site-header-tools{display:none}.site-right-rail .right-module:first-child{display:none}.site-ad{border-radius:0;background:#fffbe1;padding:8px;font:12px/1.6 SimSun,serif}.site-footer{padding:14px 0;font:12px/1.6 SimSun,serif;color:#777}
+.forum-thread-page .site-page-grid{display:block}.forum-thread-page .old-page>h1{text-align:left;font:bold 16px/1.5 SimSun,serif}.forum-thread-page .old-page>.byline{text-align:left}
+.forum-thread-page .forum-body,.forum-thread-page .forum-reply{min-height:190px;padding:40px 20px 22px 171px;background:linear-gradient(90deg,#e8f0f8 149px,#cad8e5 149px,#cad8e5 150px,white 150px);border-top:4px solid #cad8e5}
+.forum-thread-page .forum-body::before,.forum-thread-page .forum-reply .author{width:124px;left:12px}.forum-thread-page .forum-body>p:first-child::before,.forum-thread-page .forum-reply>p:first-of-type::before{content:'发表于旧帖存档 · ' counter(post) ' 楼';margin:-23px 0 17px}
+.forum-thread-page .forum-body p,.forum-thread-page .forum-reply p{font:14px/1.75 SimSun,serif}
+.computer .window[aria-label="Outlook Express"] .window-titlebar{height:30px;min-height:30px;border-radius:0;background:linear-gradient(#79abfa 0,#236af0 6%,#0057e6 20%,#0051d6 70%,#0043b5 92%,#00399c);font:bold 13px/16px Tahoma,SimSun,sans-serif}
+.computer .window[aria-label="Outlook Express"].window-restored .window-titlebar{border-radius:7px 7px 0 0}
+.computer .window[aria-label="Outlook Express"] .menu-bar{height:23px;min-height:23px;gap:0;padding:1px 4px;background:var(--xp-face);border-bottom:1px solid #fff;font:12px/18px Tahoma,SimSun,sans-serif}
+.oe-client>.oe-folder-caption+.mail-layout{grid-template-columns:196px minmax(0,1fr)}
+.oe-message-list th:last-child{width:225px}.oe-message-list td{color:inherit}.oe-message-list .selected td{color:#fff}.mail-list .subject span{color:#777}
+.paperclip{display:inline-block;position:relative;width:6px;height:12px;border:1px solid currentColor;border-radius:4px;transform:rotate(30deg)}.paperclip::after{content:'';position:absolute;left:1px;top:1px;height:7px;width:2px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;border-radius:0 0 2px 0}
+.continuity-names{padding:12px;border:1px solid #aaa}.continuity-names form{margin-top:12px}
+.window:has(.browser-layout)::after{display:none}
+.native-statusbar{display:flex;align-items:center;flex:0 0 21px;height:21px;padding:1px 3px;background:var(--xp-face);border-top:1px solid #aca899;font:12px/17px Tahoma,SimSun,sans-serif}
+.native-statusbar span:first-child{flex:1}.native-statusbar span{padding:0 5px}.native-statusbar span:last-child{width:150px;border-left:1px solid #aca899}
+.menu-bar{position:relative;z-index:30;overflow:visible}.menu-anchor{position:relative;height:21px}.menu-anchor>button{height:21px;border:1px solid transparent;padding:0 7px;background:none;color:#000;font:12px/18px Tahoma,SimSun,sans-serif}.menu-anchor>button:hover,.menu-anchor>button[aria-expanded=true]{background:#c1d2ee;border-color:#316ac5}
+.menu-popup{position:absolute;z-index:40;left:0;top:20px;width:185px;padding:2px;border:1px solid #aca899;background:#fff;box-shadow:2px 2px 2px #0004}
+.menu-popup button{display:block;width:100%;padding:4px 10px 4px 25px;border:0;background:none;color:#000;font:12px/17px Tahoma,SimSun,sans-serif;text-align:left}.menu-popup button:hover:not(:disabled){background:#316ac5;color:#fff}.menu-popup button:disabled{color:#aaa}
+.ui-modal-backdrop{position:absolute;z-index:80;inset:0;display:grid;place-items:center;background:transparent}.ui-about{width:340px;padding:0 14px 14px;border:3px solid #0054e3;border-radius:7px 7px 0 0;background:var(--xp-face);box-shadow:2px 2px 4px #0004;font:12px/1.6 Tahoma,SimSun,sans-serif}.ui-about h2{margin:0 -14px 15px;padding:4px 6px;background:linear-gradient(#7baafa,#0756df 20%,#004ccc);color:white;font:bold 13px/20px Tahoma,SimSun,sans-serif}.ui-about button{display:block;margin-left:auto}
+.window-titlebar .tiny-icon{margin-right:0}.window-titlebar{user-select:none}
+.window>.menu-bar::after{content:'';position:absolute;right:0;top:0;width:35px;height:22px;border-left:1px solid #aca899;background:white url('./assets/xp-original/windows.png') center/21px no-repeat}
+.window>.menu-bar{padding-right:40px}
+.oe-toolbar-row>.oe-tool>.oe-tool-icon{filter:brightness(1.17) sepia(.04)}
+.oe-toolbar-row>.oe-tool-static{opacity:.62}
+.site-forum .site-page-grid>.site-main-column>.old-page,.site-archive .site-page-grid>.site-main-column>.old-page{background:white}
+.start-menu-main{grid-template-rows:55px 55px 45px 45px auto}.start-computer{grid-area:2/2}.start-network{grid-area:3/2}.start-menu-main>.start-menu-desktop{grid-area:4/2}.start-menu-rule{display:none}.start-menu-main>.start-computer,.start-menu-main>.start-network{color:#173865}.start-menu-main>button span{font:12px/17px Tahoma,SimSun,sans-serif}.start-menu-main>button small{font:11px/15px Tahoma,SimSun,sans-serif;color:#555}
+.explorer-views,.system-explorer-toolbar .explorer-views{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect x='2' y='3' width='20' height='18' fill='white' stroke='%236c8cba'/%3E%3Cpath d='M3 4h18v3H3z' fill='%23367ec2'/%3E%3Cpath d='M5 10h3v3H5zM5 15h3v3H5z' fill='%23379ade'/%3E%3Cpath d='M11 10h3v3h-3zM11 15h3v3h-3z' fill='%23ebbb48'/%3E%3Cpath d='M17 10h3v3h-3zM17 15h3v3h-3z' fill='%2389b869'/%3E%3C/svg%3E")}
+.oe-folder-inbox,.oe-folder-draft,.oe-folder-sent,.oe-folder-trash{width:16px;height:16px;background-image:url('./assets/oe-reference-p1.jpg');background-size:855px 510px;mix-blend-mode:multiply}
+.oe-folder-inbox{background-position:-41px -197px}.oe-folder-draft{background-position:-41px -288px}.oe-folder-sent{background-position:-41px -241px}.oe-folder-trash{background-position:-41px -265px}
+.site-page a.visited-page,.search-results a.visited-page{color:#800080}
+.site-network-header nav a.visited-page{color:#e5cbef}
+.oe-message-list tr.unread td,.oe-message-list tr.unread .mail-subject-button{font-weight:bold}
+.oe-toolbar-row>button.oe-tool:disabled{opacity:.5;cursor:default}
+.oe-toolbar-row>button.oe-tool:disabled:hover{border-color:transparent;outline:0;box-shadow:none!important}
+@media(max-width:800px){.computer{min-width:800px}.window-restored{inset:10px 10px 40px}.site-page-grid{grid-template-columns:120px minmax(0,1fr) 140px}.site-rail,.site-right-rail{display:block}.forum-thread-page .site-rail,.forum-thread-page .site-right-rail{display:none}.documents-side{display:block}.task-item{width:135px}.tray{padding:0 7px}.local-document .document-paper{padding:12px 20px 30px}}
+
+/* Previously opened attachments remain reachable while another mail is selected. */
+.oe-retained-attachments{margin-top:14px;border-top:1px solid #aca899}
+.oe-retained-backup{display:flex;align-items:flex-start;gap:5px;box-sizing:border-box;width:100%;padding:7px 6px;border:0;background:#fff;color:#111;text-align:left;font:12px/1.5 Tahoma,SimSun,sans-serif}
+.oe-retained-backup>span{display:block;min-width:0;overflow-wrap:anywhere}
+.oe-retained-backup b{font-weight:normal}.oe-retained-backup small{display:block;font:11px/1.5 Tahoma,SimSun,sans-serif;color:#666}
+.oe-retained-backup .attachment-file-icon{flex:none;margin-top:1px}
+.oe-retained-backup:hover,.oe-retained-backup:focus-visible{background:#e8edf7;color:#000}
+.oe-retained-backup.active{background:#316ac5;color:#fff}.oe-retained-backup.active small{color:#fff}
+
+/* Saved inbox and draft share the OE list/preview layout. */
+.oe-local-list{flex-basis:200px}.oe-local-list table{width:100%;table-layout:fixed}.oe-local-list th:nth-child(1){width:24px}.oe-local-list th:nth-child(2){width:24px}.oe-local-list th:nth-child(3){width:170px}.oe-local-list th:last-child{width:160px}.oe-local-list td{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.oe-local-list .mail-subject-button{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.oe-empty-preview{flex:1;background:#fff}.oe-envelope{display:inline-block;width:14px;height:10px;border:1px solid #777;background:linear-gradient(32deg,transparent 47%,#999 49%,#999 53%,transparent 55%) left top/50% 100% no-repeat,linear-gradient(-32deg,transparent 47%,#999 49%,#999 53%,transparent 55%) right top/50% 100% no-repeat,#fffdf0;vertical-align:middle}.mail-state-column{text-align:center}.oe-blank-recipient{color:#777}.oe-draft-view .oe-message-body{font:14px/1.65 SimSun,serif;padding:14px 16px}.oe-draft-view .oe-message-body p{margin:0 0 16px}
